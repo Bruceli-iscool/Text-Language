@@ -16,9 +16,9 @@ class main():
             try:
                 interpret.interpret(inputuser)
             except Exception as e:
-                if len(inputuser) < 1 or inputuser == 'exit()' or inputuser == 'license()':
+                if len(inputuser) < 1 or inputuser == 'exit()' or inputuser == 'license()' or inputuser == 'shell':
                     pass
-            else:
-                print(f"txt: An error occurred: {e}")
+                else:
+                    print(f"txt: An error occurred: {e}")
 print("Text-Language Interpreter: TLI\nEnter filepath or start a shell session with shell.\nOr exit() to exit or license() for license.")
 main.main()
