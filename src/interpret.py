@@ -23,6 +23,11 @@ def interpret(filename):
                 num1, num2 = math.split("/")
                 num1, num2 = int(num1), int(num2)
                 print(num1/num2)
+            elif ";pow" in line:
+                name, math = line.split(" ")
+                num1, num2 = math.split("^")
+                num1, num2 = int(num1), int(num2)
+                print(num1**num2)
             elif "//;" in line:
                 pass
             else:
@@ -59,6 +64,11 @@ def shell():
                 num1, num2 = math.split("/")
                 num1, num2 = int(num1), int(num2)
                 print(num1/num2)
+            elif ";pow" in shellinput:
+                name, math = shellinput.split(" ")
+                num1, num2 = math.split("^")
+                num1, num2 = int(num1), int(num2)
+                print(num1**num2)
             else:
                 print(shellinput)
         else:

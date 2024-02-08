@@ -11,3 +11,5 @@ Features can be used with their respected tags:
       //; This multiplys two numbers
       ;div 1/2
       //; This divides two numbers
+      ;pow 1^2
+      //; This calculates exponets
