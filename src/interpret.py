@@ -8,7 +8,12 @@ def interpret(filename):
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1+num2)
-            if "//;" in line:
+            elif ";sub" in line:
+                name, math = line.split(" ")
+                num1, num2 = line.split("-")
+                num1, num2 = int(num1), int(num2)
+                print(num1-num2)
+            elif "//;" in line:
                 pass
             else:
                 print(line)
@@ -26,8 +31,14 @@ def shell():
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1+num2)
-            if "//;" in shellinput:
+            elif "//;" in shellinput:
                 pass
+            elif ";sub" in shellinput:
+                name, math = shellinput.split(" ")
+                num1, num2 = math.split("-")
+                num1 = int(num1)
+                num2 = int(num2)
+                print(num1-num2)
             else:
                 print(shellinput)
         else:
