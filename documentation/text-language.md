@@ -13,3 +13,5 @@ Features can be used with their respected tags:
       //; This divides two numbers
       ;pow 1^2
       //; This calculates exponets
+      ;newline
+      //; This creates an newline

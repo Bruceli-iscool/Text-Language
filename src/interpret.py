@@ -1,3 +1,4 @@
+import sys
 """Proccess code"""
 def interpret(filename):
     with open(filename) as file:
@@ -30,6 +31,8 @@ def interpret(filename):
                 print(num1**num2)
             elif "//;" in line:
                 pass
+            elif ";newline" in  line:
+                print("\n")
             else:
                 print(line)
 
@@ -39,7 +42,9 @@ def shell():
         shellinput = input(">> ")
         if shellinput == "exit()":
             return
-        elif len(shellinput) != 0 and shellinput != "exit()":
+        if shellinput == "sysexit()":
+            sys.exit()
+        elif len(shellinput) != 0 and shellinput != "exit()" and "sysexit()":
             if ";add" in shellinput:
                 name, math = shellinput.split(" ")
                 num1, num2 = math.split("+")
@@ -69,6 +74,8 @@ def shell():
                 num1, num2 = math.split("^")
                 num1, num2 = int(num1), int(num2)
                 print(num1**num2)
+            elif ";newline" in shellinput:
+                print("\n")
             else:
                 print(shellinput)
         else:
