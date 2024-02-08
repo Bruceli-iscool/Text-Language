@@ -33,6 +33,12 @@ def interpret(filename):
                 pass
             elif ";newline" in  line:
                 print("\n")
+            elif ";printf" in line:
+                name, filename = line.split(" ")
+                with open(filename) as file:
+                    for line in file:
+                        print(line)
+
             else:
                 print(line)
 
@@ -76,6 +82,11 @@ def shell():
                 print(num1**num2)
             elif ";newline" in shellinput:
                 print("\n")
+            elif ";printf" in shellinput:
+                name, filename = shellinput.split(" ")
+                with open(filename) as file:
+                    for line in file:
+                        print(line)
             else:
                 print(shellinput)
         else:

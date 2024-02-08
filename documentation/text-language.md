@@ -15,3 +15,5 @@ Features can be used with their respected tags:
       //; This calculates exponets
       ;newline
       //; This creates an newline
+      ;printf /path/to/file
+      //; This prints file contents
