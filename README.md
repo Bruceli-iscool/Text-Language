@@ -3,3 +3,4 @@
  For example:
 
      Hello, World!
+     //; This is a comment
