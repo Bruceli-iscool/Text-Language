@@ -17,3 +17,9 @@ Features can be used with their respected tags:
       //; This creates an newline
       ;printf /path/to/file
       //; This prints file contents
+      ;root 25
+      //; This prints the square root of a number
+      ;write~ content |filename|/path/to/file
+      //; writes content to a file
+      ;overwrite~ content |filename|/path/to/file
+      //; writes content to a file and replaces whats in it
