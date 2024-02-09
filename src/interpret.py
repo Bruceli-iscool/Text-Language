@@ -1,5 +1,6 @@
 import sys
 import math
+import functions
 
 """Proccess code"""
 
@@ -72,7 +73,7 @@ def shell():
             return
         if shellinput == "sysexit()":
             sys.exit()
-        elif len(shellinput) != 0 and shellinput != "exit()" and "sysexit()":
+        elif len(shellinput) != 0 and shellinput != "exit()" and "sysexit()" and ";define" not in shellinput:
             if ";add" in shellinput:
                 name, mth = shellinput.split(" ")
                 num1, num2 = mth.split("+")
@@ -124,13 +125,13 @@ def shell():
                 content, filename = content1.split("|filename|")
                 with open(filename, "w") as file:
                     file.write(content)
-            elif ";define" in shellinput:
-                name, funcname, action = shellinput.split("`")
-                functions[funcname] = action
-            elif function in shellinput:
+            elif shellinput in functions:
                 name, action = shellinput.split("`")
-
+                functions.proccess(action)
             else:
                 print(shellinput)
+        elif ";define" in shellinput:
+                name, funcname, action = shellinput.split("`")
+                functions[funcname] = action
         else:
             pass
