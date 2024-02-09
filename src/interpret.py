@@ -3,7 +3,8 @@ import math
 
 """Proccess code"""
 
-
+# list of functions
+functions = {}
 def interpret(filename):
     with open(filename) as file:
         for line in file:
@@ -123,6 +124,12 @@ def shell():
                 content, filename = content1.split("|filename|")
                 with open(filename, "w") as file:
                     file.write(content)
+            elif ";define" in shellinput:
+                name, funcname, action = shellinput.split("`")
+                functions[funcname] = action
+            elif function in shellinput:
+                name, action = shellinput.split("`")
+
             else:
                 print(shellinput)
         else:
