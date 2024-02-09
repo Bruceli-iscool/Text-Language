@@ -131,7 +131,8 @@ def shell():
             else:
                 print(shellinput)
         elif ";define" in shellinput:
-                funcname, action = shellinput.split("`")
+                name, funcname, action = shellinput.split("`")
                 functions[funcname] = action
+                # implement functions
         else:
             pass
