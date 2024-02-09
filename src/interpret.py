@@ -1,4 +1,5 @@
 import sys
+import math
 """Proccess code"""
 def interpret(filename):
     with open(filename) as file:
@@ -38,7 +39,11 @@ def interpret(filename):
                 with open(filename) as file:
                     for line in file:
                         print(line)
-
+            elif ";root" in line:
+                name, math = line.split(" ")
+                math = int(math)
+                answer = math.sqrt(math)
+                print(answer)
             else:
                 print(line)
 
@@ -87,6 +92,11 @@ def shell():
                 with open(filename) as file:
                     for line in file:
                         print(line)
+            elif ";root" in shellinput:
+                name, math = shellinput.split(" ")
+                math = int(math)
+                answer = math.sqrt(math)
+                print(answer)
             else:
                 print(shellinput)
         else:
