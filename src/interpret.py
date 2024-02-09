@@ -126,12 +126,13 @@ def shell():
                 with open(filename, "w") as file:
                     file.write(content)
             elif shellinput in functions:
-                name, action = shellinput.split("`")
+                name, action = shellinput.split(">")
                 functions.proccess(action)
             else:
                 print(shellinput)
         elif ";define" in shellinput:
-                name, funcname, action = shellinput.split("`")
+                name, content = shellinput.split("`")
+                funcname, action = content.split(">")
                 functions[funcname] = action
                 # implement functions
         else:
