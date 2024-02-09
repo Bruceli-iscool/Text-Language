@@ -5,29 +5,29 @@ def interpret(filename):
     with open(filename) as file:
         for line in file:
             if ";add" in line:
-                name, math = line.split(" ")
-                num1, num2 = math.split("+")
+                name, mth = line.split(" ")
+                num1, num2 = mth.split("+")
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1+num2)
             elif ";sub" in line:
-                name, math = line.split(" ")
-                num1, num2 = math.split("-")
+                name, mth = line.split(" ")
+                num1, num2 = mth.split("-")
                 num1, num2 = int(num1), int(num2)
                 print(num1-num2)
             elif ";mul" in line:
-                name, math = line.split(" ")
-                num1, num2 = math.split("*")
+                name, mth = line.split(" ")
+                num1, num2 = mth.split("*")
                 num1, num2 = int(num1), int(num2)
                 print(num1*num2)
             elif ";div" in line:
-                name, math = line.split(" ")
-                num1, num2 = math.split("/")
+                name, mth = line.split(" ")
+                num1, num2 = mth.split("/")
                 num1, num2 = int(num1), int(num2)
                 print(num1/num2)
             elif ";pow" in line:
-                name, math = line.split(" ")
-                num1, num2 = math.split("^")
+                name, mth = line.split(" ")
+                num1, num2 = mth.split("^")
                 num1, num2 = int(num1), int(num2)
                 print(num1**num2)
             elif "//;" in line:
@@ -40,9 +40,9 @@ def interpret(filename):
                     for line in file:
                         print(line)
             elif ";root" in line:
-                name, math = line.split(" ")
-                math = int(math)
-                answer = math.sqrt(math)
+                name, mth = line.split(" ")
+                mth = int(mth)
+                answer = mth.sqrt(mth)
                 print(answer)
             else:
                 print(line)
@@ -57,32 +57,32 @@ def shell():
             sys.exit()
         elif len(shellinput) != 0 and shellinput != "exit()" and "sysexit()":
             if ";add" in shellinput:
-                name, math = shellinput.split(" ")
-                num1, num2 = math.split("+")
+                name, mth = shellinput.split(" ")
+                num1, num2 = mth.split("+")
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1+num2)
             elif "//;" in shellinput:
                 pass
             elif ";sub" in shellinput:
-                name, math = shellinput.split(" ")
-                num1, num2 = math.split("-")
+                name, mth = shellinput.split(" ")
+                num1, num2 = mth.split("-")
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1-num2)
             elif ";mul" in shellinput:
-                name, math = shellinput.split(" ")
-                num1, num2 = math.split("*")
+                name, mth = shellinput.split(" ")
+                num1, num2 = mth.split("*")
                 num1, num2 = int(num1), int(num2)
                 print(num1*num2)
             elif ";div" in shellinput:
-                name, math = shellinput.split(" ")
-                num1, num2 = math.split("/")
+                name, mth = shellinput.split(" ")
+                num1, num2 = mth.split("/")
                 num1, num2 = int(num1), int(num2)
                 print(num1/num2)
             elif ";pow" in shellinput:
-                name, math = shellinput.split(" ")
-                num1, num2 = math.split("^")
+                name, mth = shellinput.split(" ")
+                num1, num2 = mth.split("^")
                 num1, num2 = int(num1), int(num2)
                 print(num1**num2)
             elif ";newline" in shellinput:
@@ -93,9 +93,9 @@ def shell():
                     for line in file:
                         print(line)
             elif ";root" in shellinput:
-                name, math = shellinput.split(" ")
-                math = int(math)
-                answer = math.sqrt(math)
+                name, mth = shellinput.split(" ")
+                mth = int(mth)
+                answer = math.sqrt(mth)
                 print(answer)
             else:
                 print(shellinput)
