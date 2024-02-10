@@ -71,6 +71,8 @@ def interpret(filename):
                 name, content = line.split("`")
                 funcname, action = content.split(">")
                 functioned[funcname] = action
+            else:
+                pass
 
 
 def shell():

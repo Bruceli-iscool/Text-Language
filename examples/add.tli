@@ -1,8 +1,5 @@
-//; files can also end in .tli 
-Hello, World!
-;add 1+2
-;define`fun>;add 1+2 
-;fun
+;define`ful>;pow 1^2 
+;ful
 ;add 23+3
 ;sub 1-3
 ;pow 2^4
