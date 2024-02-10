@@ -1,0 +1,8 @@
+The Text-Language Interpreter standards 1.0
+
+Preamble:
+The Standards of the TLI is a series of unified syntax rules. These Standards are applied to every TLI variant. 
+These Standards are version Specific.
+
+1.0
+A simple non-turing complete language for Text files. With Limited functionallity. 
