@@ -83,12 +83,7 @@ def shell():
             return
         if shellinput == "sysexit()":
             sys.exit()
-        elif (
-            len(shellinput) != 0
-            and shellinput != "exit()"
-            and "sysexit()"
-            and ";define" not in shellinput
-        ):
+        if len(shellinput) != 0 and shellinput != "exit()" and "sysexit()" and ";define" not in shellinput:
             if ";add" in shellinput:
                 name, mth = shellinput.split(" ")
                 num1, num2 = mth.split("+")
