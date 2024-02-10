@@ -1,11 +1,13 @@
 import sys
 import math
-import functions
+import func
 
 """Proccess code"""
 
 # list of functions
-functions = {}
+functioned = {}
+
+
 def interpret(filename):
     with open(filename) as file:
         for line in file:
@@ -73,7 +75,12 @@ def shell():
             return
         if shellinput == "sysexit()":
             sys.exit()
-        elif len(shellinput) != 0 and shellinput != "exit()" and "sysexit()" and ";define" not in shellinput:
+        elif (
+            len(shellinput) != 0
+            and shellinput != "exit()"
+            and "sysexit()"
+            and ";define" not in shellinput
+        ):
             if ";add" in shellinput:
                 name, mth = shellinput.split(" ")
                 num1, num2 = mth.split("+")
@@ -125,15 +132,15 @@ def shell():
                 content, filename = content1.split("|filename|")
                 with open(filename, "w") as file:
                     file.write(content)
-            elif shellinput in functions:
-                name, action = shellinput.split(">")
-                functions.proccess(action)
+            elif shellinput.startswith(";") and shellinput[1:] in functioned:
+                action = functioned[shellinput[1:]]
+                func.proccess(action)
             else:
                 print(shellinput)
         elif ";define" in shellinput:
-                name, content = shellinput.split("`")
-                funcname, action = content.split(">")
-                functions[funcname] = action
-                # implement functions
+            name, content = shellinput.split("`")
+            funcname, action = content.split(">")
+            functioned[funcname] = action
+
         else:
             pass
