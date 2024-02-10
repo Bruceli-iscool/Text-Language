@@ -52,4 +52,6 @@ def proccess(input):
         content, filename = content1.split("|filename|")
         with open(filename, "w") as file:
             file.write(content)
+    else:
+        print(shellinput)
  
