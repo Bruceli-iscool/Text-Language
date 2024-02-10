@@ -11,58 +11,66 @@ functioned = {}
 def interpret(filename):
     with open(filename) as file:
         for line in file:
-            if ";add" in line:
-                name, mth = line.split(" ")
-                num1, num2 = mth.split("+")
-                num1 = int(num1)
-                num2 = int(num2)
-                print(num1 + num2)
-            elif ";sub" in line:
-                name, mth = line.split(" ")
-                num1, num2 = mth.split("-")
-                num1, num2 = int(num1), int(num2)
-                print(num1 - num2)
-            elif ";mul" in line:
-                name, mth = line.split(" ")
-                num1, num2 = mth.split("*")
-                num1, num2 = int(num1), int(num2)
-                print(num1 * num2)
-            elif ";div" in line:
-                name, mth = line.split(" ")
-                num1, num2 = mth.split("/")
-                num1, num2 = int(num1), int(num2)
-                print(num1 / num2)
-            elif ";pow" in line:
-                name, mth = line.split(" ")
-                num1, num2 = mth.split("^")
-                num1, num2 = int(num1), int(num2)
-                print(num1**num2)
-            elif "//;" in line:
-                pass
-            elif ";newline" in line:
-                print("\n")
-            elif ";printf" in line:
-                name, filename = line.split(" ")
-                with open(filename) as file:
-                    for line in file:
-                        print(line)
-            elif ";root" in line:
-                name, mth = line.split(" ")
-                mth = int(mth)
-                answer = mth.sqrt(mth)
-                print(answer)
-            elif ";write~" in line:
-                name, content1 = line.split("~")
-                content, filename = content1.split("|filename|")
-                with open(filename, "a") as file:
-                    file.write(content)
-            elif ";overwrite~" in line:
-                name, content1 = line.split("~")
-                content, filename = content1.split("|filename|")
-                with open(filename, "w") as file:
-                    file.write(content)
-            else:
-                print(line)
+            if ";define" not in line:
+                if ";add" in line:
+                    name, mth = line.split(" ")
+                    num1, num2 = mth.split("+")
+                    num1 = int(num1)
+                    num2 = int(num2)
+                    print(num1 + num2)
+                elif ";sub" in line:
+                    name, mth = line.split(" ")
+                    num1, num2 = mth.split("-")
+                    num1, num2 = int(num1), int(num2)
+                    print(num1 - num2)
+                elif ";mul" in line:
+                    name, mth = line.split(" ")
+                    num1, num2 = mth.split("*")
+                    num1, num2 = int(num1), int(num2)
+                    print(num1 * num2)
+                elif ";div" in line:
+                    name, mth = line.split(" ")
+                    num1, num2 = mth.split("/")
+                    num1, num2 = int(num1), int(num2)
+                    print(num1 / num2)
+                elif ";pow" in line:
+                    name, mth = line.split(" ")
+                    num1, num2 = mth.split("^")
+                    num1, num2 = int(num1), int(num2)
+                    print(num1**num2)
+                elif "//;" in line:
+                    pass
+                elif ";newline" in line:
+                    print("\n")
+                elif ";printf" in line:
+                    name, filename = line.split(" ")
+                    with open(filename) as file:
+                        for line in file:
+                            print(line)
+                elif ";root" in line:
+                    name, mth = line.split(" ")
+                    mth = int(mth)
+                    answer = mth.sqrt(mth)
+                    print(answer)
+                elif ";write~" in line:
+                    name, content1 = line.split("~")
+                    content, filename = content1.split("|filename|")
+                    with open(filename, "a") as file:
+                        file.write(content)
+                elif ";overwrite~" in line:
+                    name, content1 = line.split("~")
+                    content, filename = content1.split("|filename|")
+                    with open(filename, "w") as file:
+                        file.write(content)
+                elif line.startswith(";") and line[1:] in functioned:
+                    action = functioned[line[1:]]
+                    func.proccess(action)
+                else:
+                    print(line)
+            elif ";define" in line:
+                name, content = line.split("`")
+                funcname, action = content.split(">")
+                functioned[funcname] = action
 
 
 def shell():
