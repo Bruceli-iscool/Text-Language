@@ -11,24 +11,33 @@ functioned = {}
 def interpret(input):
     if ";define" not in input:
         if ";add" in input:
-            name, mth = input.split(" ")
-            num1, num2 = mth.split("+")
-            num1 = int(num1)
-            num2 = int(num2)
-            print(num1 + num2)
+            try:
+                name, mth = input.split(" ")
+                num1, num2 = mth.split("+")
+                num1 = int(num1)
+                num2 = int(num2)
+                print(num1 + num2)
+            except Exception as e:
+                print(f"tli: An error occurred: {e}")
         elif "//;" in input:
             pass
         elif ";sub" in input:
-            name, mth = input.split(" ")
-            num1, num2 = mth.split("-")
-            num1 = int(num1)
-            num2 = int(num2)
-            print(num1 - num2)
+            try:
+                name, mth = input.split(" ")
+                num1, num2 = mth.split("-")
+                num1 = int(num1)
+                num2 = int(num2)
+                print(num1 - num2)
+            except Exception as e:
+                print(f"tli: An error occurred: {e}")
         elif ";mul" in input:
-            name, mth = input.split(" ")
-            num1, num2 = mth.split("*")
-            num1, num2 = int(num1), int(num2)
-            print(num1 * num2)
+            try:
+                name, mth = input.split(" ")
+                num1, num2 = mth.split("*")
+                num1, num2 = int(num1), int(num2)
+                print(num1 * num2)
+            except Exception as e:
+                print(f"txt: An error occurred: {e}")
         elif ";div" in input:
             name, mth = input.split(" ")
             num1, num2 = mth.split("/")
@@ -68,7 +77,7 @@ def interpret(input):
             print(input)
     elif ";define" in input:
         name, content = input.split("`")
-        funcname, action = content.split(">")
+        funcname, action = content.split("=")
         functioned[funcname] = action
 
     else:
