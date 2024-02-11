@@ -89,8 +89,10 @@ def shell():
         shellinput = input(">> ")
         if shellinput == "exit()":
             return
-        if shellinput == "sys.exit()":
+        elif shellinput == "sys.exit()":
             sys.exit()
+        else:
+            interpret(shellinput)
 
 
 
