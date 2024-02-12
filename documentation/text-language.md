@@ -1,5 +1,5 @@
 # Text-Language
- Text-Langauge Interpreter is the standard for text-langauge. It allows for a much more complex langauge. All Text-Langauge Interpreter files are saved with the .txt extension
+ Text-Langauge Interpreter is the standard for text-langauge. It allows for a much more complex langauge. All Text-Langauge Interpreter files are saved with the .txt, .tl, or .tli extensions.
 # Features
 Features can be used with their respected tags:
 
