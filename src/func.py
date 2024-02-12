@@ -42,13 +42,13 @@ def proccess(input):
         mth = int(mth)
         answer = math.sqrt(mth)
         print(answer)
-    elif ";write~" in shellinput:
-        name, content1 = shellinput.split("~")
+    elif ";write:" in shellinput:
+        name, content1 = shellinput.split(":")
         content, filename = content1.split("|filename|")
         with open(filename, "a") as file:
             file.write(content)
-    elif ";overwrite~" in shellinput:
-        name, content1 = shellinput.split("~")
+    elif ";overwrite:" in shellinput:
+        name, content1 = shellinput.split(":")
         content, filename = content1.split("|filename|")
         with open(filename, "w") as file:
             file.write(content)

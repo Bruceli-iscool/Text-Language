@@ -72,24 +72,33 @@ def interpret(input):
                 print(answer)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";write~" in input:
-            name, content1 = input.split("~")
-            content, filename = content1.split("|filename|")
-            with open(filename, "a") as file:
-                file.write(content)
-        elif ";overwrite~" in input:
-            name, content1 = input.split("~")
-            content, filename = content1.split("|filename|")
-            with open(filename, "w") as file:
-                file.write(content)
+        elif ";write:" in input:
+            try:
+                name, content1 = input.split(":")
+                content, filename = content1.split("|filename|")
+                with open(filename, "a") as file:
+                    file.write(content)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
+        elif ";overwrite:" in input:
+            try:
+                name, content1 = input.split(":")
+                content, filename = content1.split("|filename|")
+                with open(filename, "w") as file:
+                    file.write(content)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif input.startswith(";") and input[1:] in functioned:
-            action = functioned[input[1:]]
-            func.proccess(action)
+            try:
+                action = functioned[input[1:]]
+                func.proccess(action)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         else:
             print(input)
     elif ";define" in input:
-        name, content = input.split("`")
-        funcname, action = content.split("=")
+        name, content = input.split(">")
+        funcname, action = content.split(":")
         functioned[funcname] = action
 
     else:
