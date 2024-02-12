@@ -72,17 +72,17 @@ def interpret(input):
                 print(answer)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";write:" in input:
+        elif ";write~" in input:
             try:
-                name, content1 = input.split(":")
+                name, content1 = input.split("~")
                 content, filename = content1.split("|filename|")
                 with open(filename, "a") as file:
                     file.write(content)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";overwrite:" in input:
+        elif ";overwrite~" in input:
             try:
-                name, content1 = input.split(":")
+                name, content1 = input.split("~")
                 content, filename = content1.split("|filename|")
                 with open(filename, "w") as file:
                     file.write(content)
@@ -91,15 +91,24 @@ def interpret(input):
         elif input.startswith(";") and input[1:] in functioned:
             try:
                 action = functioned[input[1:]]
-                func.proccess(action)
+                try:
+                    action, action2, action3 = action.split(":")
+                    func.proccess(action)
+                    func.proccess(action2)
+                    func.proccess(action3)
+                except Exception as e:
+                    func.proccess(action)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
             print(input)
     elif ";define" in input:
-        name, content = input.split(">")
-        funcname, action = content.split(":")
-        functioned[funcname] = action
+        try:
+            name, content = input.split(">")
+            funcname, action = content.split("=")
+            functioned[funcname] = action
+        except Exception as e:
+            print(f"tldt: An error occured: {e}")
 
     else:
         pass
