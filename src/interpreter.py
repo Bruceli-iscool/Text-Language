@@ -6,7 +6,7 @@ import func
 
 # list of functions
 functioned = {}
-
+# work on TDLI error handling
 
 def interpret(input):
     if ";define" not in input:
@@ -18,7 +18,7 @@ def interpret(input):
                 num2 = int(num2)
                 print(num1 + num2)
             except Exception as e:
-                print(f"tli: An error occurred: {e}")
+                print(f"tdt: An error occurred: {e}")
         elif "//;" in input:
             pass
         elif ";sub" in input:
@@ -29,7 +29,7 @@ def interpret(input):
                 num2 = int(num2)
                 print(num1 - num2)
             except Exception as e:
-                print(f"tli: An error occurred: {e}")
+                print(f"tldt: An error occurred: {e}")
         elif ";mul" in input:
             try:
                 name, mth = input.split(" ")
@@ -37,29 +37,41 @@ def interpret(input):
                 num1, num2 = int(num1), int(num2)
                 print(num1 * num2)
             except Exception as e:
-                print(f"txt: An error occurred: {e}")
+                print(f"tldt: An error occurred: {e}")
         elif ";div" in input:
-            name, mth = input.split(" ")
-            num1, num2 = mth.split("/")
-            num1, num2 = int(num1), int(num2)
-            print(num1 / num2)
+            try:
+                name, mth = input.split(" ")
+                num1, num2 = mth.split("/")
+                num1, num2 = int(num1), int(num2)
+                print(num1 / num2)
+            except Exception as e:
+                print(f"tldt: An error occurred: {e}")
         elif ";pow" in input:
-            name, mth = input.split(" ")
-            num1, num2 = mth.split("^")
-            num1, num2 = int(num1), int(num2)
-            print(num1**num2)
+            try:
+                name, mth = input.split(" ")
+                num1, num2 = mth.split("^")
+                num1, num2 = int(num1), int(num2)
+                print(num1**num2)
+            except Exception as e:
+                print(f"tldt: An error occurred: {e}")
         elif ";newline" in input:
             print("\n")
         elif ";printf" in input:
-            name, filename = input.split(" ")
-            with open(filename) as file:
-                for line in file:
-                    print(line)
+            try:
+                name, filename = input.split(" ")
+                with open(filename) as file:
+                    for line in file:
+                        print(line)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif ";root" in input:
-            name, mth = input.split(" ")
-            mth = int(mth)
-            answer = math.sqrt(mth)
-            print(answer)
+            try:
+                name, mth = input.split(" ")
+                mth = int(mth)
+                answer = math.sqrt(mth)
+                print(answer)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif ";write~" in input:
             name, content1 = input.split("~")
             content, filename = content1.split("|filename|")

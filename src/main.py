@@ -19,6 +19,6 @@ class main():
                 if len(inputuser) < 1 or inputuser == 'exit()' or inputuser == 'license()' or inputuser == 'shell':
                     pass
                 else:
-                    print(f"txt: An error occurred: {e}")
+                    print(f"tldt: An error occurred: {e}")
 print("Text-Language Interpreter: TLI\nEnter filepath or start a shell session with shell.\nOr exit() to exit or license() for license.")
 main.main()
