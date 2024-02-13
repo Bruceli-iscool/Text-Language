@@ -97,7 +97,12 @@ def interpret(input):
                 func.proccess(action2)
                 func.proccess(action3)
             except Exception as e:
-                func.proccess(action)
+                try:
+                    action, action2 = action.split(":")
+                    func.proccess(action)
+                    func.proccess(action2)
+                except Exception as e:
+                    func.proccess(action)
         else:
             print(input)
     elif ";define" in input:
