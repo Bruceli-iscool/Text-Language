@@ -96,10 +96,8 @@ def interpret(input):
                 func.proccess(action)
                 func.proccess(action2)
                 func.proccess(action3)
-                print("hi")
             except Exception as e:
                 func.proccess(action)
-                print("hi")
         else:
             print(input)
     elif ";define" in input:
@@ -107,7 +105,6 @@ def interpret(input):
             name, content = input.split(">")
             funcname, action = content.split("=")
             functioned[funcname] = action
-            print(functioned)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
 
@@ -118,6 +115,7 @@ def interpret(input):
 def openfile(filename):
     with open(filename) as file:
         for line in file:
+            line = line.rstrip('\n')
             interpret(line)
 
 
@@ -127,6 +125,7 @@ def shell():
     )
     while True:
         shellinput = input(">> ")
+        shellinput = shellinput.rstrip('\n')
         if shellinput == "exit()":
             return
         elif shellinput == "sys.exit()":

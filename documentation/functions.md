@@ -7,4 +7,3 @@ And can be called like this:
        ;FunctionName
 Functions can have muliple lines of code:
        ;define>FunctionName=line1:line2:line3
-However, these functions must have three or one line of code.
