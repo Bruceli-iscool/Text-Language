@@ -8,6 +8,7 @@ import func
 functioned = {}
 # work on TDLI error handling
 
+
 def interpret(input):
     if ";define" not in input:
         if ";add" in input:
@@ -89,17 +90,16 @@ def interpret(input):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif input.startswith(";") and input[1:] in functioned:
+            action = functioned[input[1:]]
             try:
-                action = functioned[input[1:]]
-                try:
-                    action, action2, action3 = action.split(":")
-                    func.proccess(action)
-                    func.proccess(action2)
-                    func.proccess(action3)
-                except Exception as e:
-                    func.proccess(action)
+                action, action2, action3 = action.split(":")
+                func.proccess(action)
+                func.proccess(action2)
+                func.proccess(action3)
+                print("hi")
             except Exception as e:
-                print(f"tldt: An error occured: {e}")
+                func.proccess(action)
+                print("hi")
         else:
             print(input)
     elif ";define" in input:
@@ -107,6 +107,7 @@ def interpret(input):
             name, content = input.split(">")
             funcname, action = content.split("=")
             functioned[funcname] = action
+            print(functioned)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
 
@@ -130,8 +131,7 @@ def shell():
             return
         elif shellinput == "sys.exit()":
             sys.exit()
+        elif len(shellinput) < 1:
+            pass
         else:
             interpret(shellinput)
-
-
-

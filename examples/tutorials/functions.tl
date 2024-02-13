@@ -1,6 +1,6 @@
 //; This will teach you about functions
 //; to declare a function
-;define`funcname=whattodo
+;define>funcname=whattodo
 //; to call a function
 ;funcname
 //; built in functions are commands that are already defined
