@@ -92,17 +92,32 @@ def interpret(input):
         elif input.startswith(";") and input[1:] in functioned:
             action = functioned[input[1:]]
             try:
-                action, action2, action3 = action.split(":")
+                action, action2, action3, action4, action5 = action.split(":")
                 func.proccess(action)
                 func.proccess(action2)
                 func.proccess(action3)
-            except Exception as e:
+                func.proccess(action4)
+                func.proccess(action5)
+            except Exception:
                 try:
-                    action, action2 = action.split(":")
+                    action, action2, action3, action4 = action.split(":")
                     func.proccess(action)
                     func.proccess(action2)
-                except Exception as e:
-                    func.proccess(action)
+                    func.proccess(action3)
+                    func.proccess(action4)
+                except Exception:
+                    try:
+                        action, action2, action3 = action.split(":")
+                        func.proccess(action)
+                        func.proccess(action2)
+                        func.proccess(action3)
+                    except Exception:
+                        try:
+                            action, action2 = action.split(":")
+                            func.proccess(action)
+                            func.proccess(action2)
+                        except Exception:
+                            func.proccess(action)
         else:
             print(input)
     elif ";define" in input:

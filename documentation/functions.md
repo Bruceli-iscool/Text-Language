@@ -6,4 +6,6 @@ And can be called like this:
        
        ;FunctionName
 Functions can have muliple lines of code:
+
        ;define>FunctionName=line1:line2:line3
+They can have up to five.
