@@ -79,7 +79,13 @@ def proccess(input):
                 file.write(content)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-            
+    elif ";sqr" in line:
+         try:
+            name, math = line.split(" ")
+            math = int(math)
+            print(math**2)
+         except Exception as e:
+             print(f"tldt: An error occured: {e}")    
     else:
         print(shellinput)
  

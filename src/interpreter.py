@@ -6,6 +6,8 @@ import func
 
 # list of functions
 functioned = {}
+# list of variables
+var = {}
 # work on TDLI error handling
 
 
@@ -118,6 +120,13 @@ def interpret(input):
                             func.proccess(action2)
                         except Exception:
                             func.proccess(action)
+        elif ";sqr" in input:
+            name, math = line.split(" ")
+            math = int(math)
+            print(math**2)
+        elif "{}" in input:
+            pass
+
         else:
             print(input)
     elif ";define" in input:
@@ -125,6 +134,13 @@ def interpret(input):
             name, content = input.split(">")
             funcname, action = content.split("=")
             functioned[funcname] = action
+        except Exception as e:
+            print(f"tldt: An error occured: {e}")
+    elif ";var" in input:
+        try:
+            name, content = input.split(">")
+            varname, value = content.split("=")
+            var[varname] = value
         except Exception as e:
             print(f"tldt: An error occured: {e}")
 
@@ -135,7 +151,7 @@ def interpret(input):
 def openfile(filename):
     with open(filename) as file:
         for line in file:
-            line = line.rstrip('\n')
+            line = line.rstrip("\n")
             interpret(line)
 
 
@@ -145,7 +161,7 @@ def shell():
     )
     while True:
         shellinput = input(">> ")
-        shellinput = shellinput.rstrip('\n')
+        shellinput = shellinput.rstrip("\n")
         if shellinput == "exit()":
             return
         elif shellinput == "sys.exit()":

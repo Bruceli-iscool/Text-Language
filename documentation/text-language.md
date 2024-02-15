@@ -1,6 +1,9 @@
 # Text-Language
+
  Text-Langauge Interpreter is the standard for text-langauge. It allows for a much more complex langauge. All Text-Langauge Interpreter files are saved with the .txt, .tl, or .tli extensions.
+
 # Features
+
 Features can be used with their respected tags:
 
       ;add 1+2
@@ -23,3 +26,5 @@ Features can be used with their respected tags:
       //; writes content to a file
       ;overwrite~ content |filename|/path/to/file
       //; writes content to a file and replaces whats in it
+      ;sqr 4
+      Finds the square of a number
