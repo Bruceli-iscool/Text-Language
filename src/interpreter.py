@@ -2,6 +2,7 @@ import sys
 import math
 import re
 import func
+from io import StringIO
 
 """Proccess code"""
 
@@ -127,10 +128,18 @@ def interpret(input):
             print(math**2)
         elif "{" in input:
             try:
+                # redirect output
                 sentence, other = input.split("{")
                 varstr, sentence2 = other.split("}")
-                if varstr.startswith(";") and varstr[1:] in var:
-                    print(sentence+str(func.proccess(var[varstr[1:]]))+sentence2)
+                original_output = sys.stdout
+                sys.stdout = output = StringIO()
+                try:
+                    func.proccess(var[varstr[1:]])
+                finally:
+                    sys.stdout = original_output
+                    actual_output = output.getvalue().strip()
+                    if actual_output:
+                        print(sentence + actual_output + sentence2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
 
