@@ -1,5 +1,6 @@
 import sys
 import math
+import re
 import func
 
 """Proccess code"""
@@ -12,7 +13,7 @@ var = {}
 
 
 def interpret(input):
-    if ";define" not in input:
+    if ";define" not in input and ";var" not in input:
         if ";add" in input:
             try:
                 name, mth = input.split(" ")
@@ -124,8 +125,14 @@ def interpret(input):
             name, math = line.split(" ")
             math = int(math)
             print(math**2)
-        elif "{}" in input:
-            pass
+        elif "{" in input:
+            try:
+                sentence, other = input.split("{")
+                varstr, sentence2 = other.split("}")
+                if varstr.startswith(";") and varstr[:1] in var:
+                    print(sentence+func.process(var[varstr[1:]])+sentence2)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
 
         else:
             print(input)
