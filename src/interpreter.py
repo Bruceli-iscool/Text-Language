@@ -73,7 +73,7 @@ def interpret(input):
                 name, mth = input.split(" ")
                 mth = int(mth)
                 answer = math.sqrt(mth)
-                print(answer)
+                print(answer, end="")
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif ";write~" in input:
@@ -129,8 +129,8 @@ def interpret(input):
             try:
                 sentence, other = input.split("{")
                 varstr, sentence2 = other.split("}")
-                if varstr.startswith(";") and varstr[:1] in var:
-                    print(sentence+func.process(var[varstr[1:]])+sentence2)
+                if varstr.startswith(";") and varstr[1:] in var:
+                    print(sentence+str(func.proccess(var[varstr[1:]]))+sentence2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
 

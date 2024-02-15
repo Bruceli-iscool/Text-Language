@@ -7,7 +7,7 @@ def proccess(input):
             num1, num2 = mth.split("+")
             num1 = int(num1)
             num2 = int(num2)
-            print(num1 + num2)
+            print(num1 + num2, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif "//;" in shellinput:
@@ -18,7 +18,7 @@ def proccess(input):
             num1, num2 = mth.split("-")
             num1 = int(num1)
             num2 = int(num2)
-            print(num1 - num2)
+            print(num1 - num2, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")   
     elif ";mul" in shellinput:
@@ -26,7 +26,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("*")
             num1, num2 = int(num1), int(num2)
-            print(num1 * num2)
+            print(num1 * num2, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";div" in shellinput:
@@ -34,7 +34,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("/")
             num1, num2 = int(num1), int(num2)
-            print(num1 / num2)
+            print(num1 / num2, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";pow" in shellinput:
@@ -42,7 +42,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("^")
             num1, num2 = int(num1), int(num2)
-            print(num1**num2)
+            print(num1**num2, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";newline" in shellinput:
@@ -52,7 +52,7 @@ def proccess(input):
            name, filename = shellinput.split(" ")
            with open(filename) as file:
                 for line in file:
-                    print(line)
+                    print(line, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";root" in shellinput:
@@ -60,7 +60,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             mth = int(mth)
             answer = math.sqrt(mth)
-            print(answer)
+            print(answer, end="")
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";write:" in shellinput:
@@ -79,13 +79,13 @@ def proccess(input):
                 file.write(content)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-    elif ";sqr" in line:
+    elif ";sqr" in shellinput:
          try:
-            name, math = line.split(" ")
+            name, math = shellinput.split(" ")
             math = int(math)
-            print(math**2)
+            print(math**2, end="")
          except Exception as e:
              print(f"tldt: An error occured: {e}")    
     else:
-        print(shellinput)
+        print(shellinput, end="")
  
