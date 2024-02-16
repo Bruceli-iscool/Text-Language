@@ -159,7 +159,6 @@ def interpret(input):
             var[varname] = value
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-
     else:
         pass
 
@@ -167,8 +166,19 @@ def interpret(input):
 def openfile(filename):
     with open(filename) as file:
         for line in file:
-            line = line.rstrip("\n")
-            interpret(line)
+            if "#get" in line:
+                try:
+                    name, filepath = line.split(" ")
+                    with open(filepath) as filename:
+                        for line in filename:
+                            line = line.rstrip("\n")
+                            line = str(line)
+                            interpret(line)
+                except Exception as e:
+                    print(f"tldt: An error occured: {e}")
+            else:
+                line = line.rstrip("\n")
+                interpret(line)
 
 
 def shell():
@@ -182,7 +192,17 @@ def shell():
             return
         elif shellinput == "sys.exit()":
             sys.exit()
-        elif len(shellinput) < 1:
+        elif len(shellinput) < 2:
             pass
-        else:
+        if "#get" in shellinput:
+            try:
+                name, filepath = shellinput.split(" ")
+                with open(filepath) as filename:
+                    for line in filename:
+                        line = line.rstrip("\n")
+                        line = str(line)
+                        interpret(line)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
+        elif shellinput != "":
             interpret(shellinput)

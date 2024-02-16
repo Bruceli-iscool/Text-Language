@@ -7,7 +7,7 @@ def proccess(input):
             num1, num2 = mth.split("+")
             num1 = int(num1)
             num2 = int(num2)
-            print(num1 + num2, end="")
+            print(num1 + num2)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif "//;" in shellinput:
@@ -18,7 +18,7 @@ def proccess(input):
             num1, num2 = mth.split("-")
             num1 = int(num1)
             num2 = int(num2)
-            print(num1 - num2, end="")
+            print(num1 - num2)
         except Exception as e:
             print(f"tldt: An error occured: {e}")   
     elif ";mul" in shellinput:
