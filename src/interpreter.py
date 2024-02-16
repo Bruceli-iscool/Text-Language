@@ -3,14 +3,13 @@ import math
 import re
 import func
 from io import StringIO
-import variable_process as vp
 
 """Proccess code"""
 
 # list of functions
 functioned = {}
 # list of variables
-var = {}
+vars = {}
 # work on TDLI error handling
 
 
@@ -20,13 +19,11 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("+")
-                num1 = vp.var_process(num1)
-                num2 = vp.var_process(num2)
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1 + num2)
             except Exception as e:
-                print(f"tdt: An error occurred: {e}")
+                print(f"tldt: An error occurred: {e}")
         elif "//;" in input:
             pass
         elif ";sub" in input:
@@ -137,7 +134,7 @@ def interpret(input):
                 original_output = sys.stdout
                 sys.stdout = output = StringIO()
                 try:
-                    func.proccess(var[varstr[1:]])
+                    func.proccess(vars[varstr[1:]])
                 finally:
                     sys.stdout = original_output
                     actual_output = output.getvalue().strip()
@@ -159,7 +156,7 @@ def interpret(input):
         try:
             name, content = input.split(">")
             varname, value = content.split("=")
-            var[varname] = value
+            vars[varname] = value
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     else:
