@@ -5,6 +5,7 @@ def proccess(input):
         try:
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("+")
+            
             num1 = int(num1)
             num2 = int(num2)
             print(num1 + num2)
@@ -26,7 +27,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("*")
             num1, num2 = int(num1), int(num2)
-            print(num1 * num2, end="")
+            print(num1 * num2)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";div" in shellinput:
@@ -34,7 +35,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("/")
             num1, num2 = int(num1), int(num2)
-            print(num1 / num2, end="")
+            print(num1 / num2)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";pow" in shellinput:
@@ -42,7 +43,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             num1, num2 = mth.split("^")
             num1, num2 = int(num1), int(num2)
-            print(num1**num2, end="")
+            print(num1**num2)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";newline" in shellinput:
@@ -52,7 +53,7 @@ def proccess(input):
            name, filename = shellinput.split(" ")
            with open(filename) as file:
                 for line in file:
-                    print(line, end="")
+                    print(line)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";root" in shellinput:
@@ -60,7 +61,7 @@ def proccess(input):
             name, mth = shellinput.split(" ")
             mth = int(mth)
             answer = math.sqrt(mth)
-            print(answer, end="")
+            print(answer)
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     elif ";write:" in shellinput:
@@ -83,9 +84,9 @@ def proccess(input):
          try:
             name, math = shellinput.split(" ")
             math = int(math)
-            print(math**2, end="")
+            print(math**2)
          except Exception as e:
              print(f"tldt: An error occured: {e}")    
     else:
-        print(shellinput, end="")
+        print(shellinput)
  

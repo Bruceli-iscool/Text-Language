@@ -3,6 +3,7 @@ import math
 import re
 import func
 from io import StringIO
+import variable_process as vp
 
 """Proccess code"""
 
@@ -19,6 +20,8 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("+")
+                num1 = vp.var_process(num1)
+                num2 = vp.var_process(num2)
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1 + num2)
