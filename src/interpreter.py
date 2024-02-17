@@ -13,13 +13,26 @@ vars = {}
 # work on TDLI error handling
 let = {}
 def var_pro(userinput):
-    pass
+    print(userinput)
+    if "{" in userinput:
+        name, content = userinput.split("{")
+        var, content = content.split("}")
+        print(var)
+        print(let)
+        if var[1:] in let:
+            action = let[var[1:]]
+            print(let)
+            return str(action)
+    else:
+        return userinput
 def interpret(input):
-    if ";define" not in input and ";var" not in input:
+    if ";define" not in input and ";var" not in input and ";let" not in input:
         if ";add" in input:
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("+")
+                num1 = var_pro(num1)
+                num2 = var_pro(num2)
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1 + num2)
@@ -143,10 +156,6 @@ def interpret(input):
                         print(sentence + actual_output + sentence2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";let" in input:
-            name, content = input.split(">")
-            varname, action = content.split("=")
-            let[varname] = action
         else:
             print(input)
     elif ";define" in input:
@@ -161,6 +170,13 @@ def interpret(input):
             name, content = input.split(">")
             varname, value = content.split("=")
             vars[varname] = value
+        except Exception as e:
+            print(f"tldt: An error occured: {e}")
+    elif ";let" in input:
+        try:
+            name, content = input.split(">")
+            varname, value = content.split("=")
+            let[varname] = value
         except Exception as e:
             print(f"tldt: An error occured: {e}")
     else:
