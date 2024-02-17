@@ -23,6 +23,9 @@ def var_pro(userinput):
             action = let[var[1:]]
             print(let)
             return str(action)
+        else:
+            print(f"Variable '{var[1:]}' not found in the dictionary 'let'")
+            return None
     else:
         return userinput
 def interpret(input):
