@@ -11,8 +11,9 @@ functioned = {}
 # list of variables
 vars = {}
 # work on TDLI error handling
-
-
+let = {}
+def var_pro(userinput):
+    pass
 def interpret(input):
     if ";define" not in input and ";var" not in input:
         if ";add" in input:
@@ -142,7 +143,10 @@ def interpret(input):
                         print(sentence + actual_output + sentence2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-
+        elif ";let" in input:
+            name, content = input.split(">")
+            varname, action = content.split("=")
+            let[varname] = action
         else:
             print(input)
     elif ";define" in input:
