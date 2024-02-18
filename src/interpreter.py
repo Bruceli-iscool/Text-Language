@@ -13,7 +13,7 @@ vars = {}
 # work on TDLI error handling
 let = {}
 
-
+# always write elifs before the "{" check line in interpret
 def var_pro(userinput, c):
     if "{" in userinput and "}" in userinput:
         start = userinput.find("{") + 1
@@ -23,6 +23,7 @@ def var_pro(userinput, c):
             var = var.rstrip()
         if var in c:
             action = c[var[0:]]
+            action = str(action)
             return str(action)
         else:
             print(f"tldt: Variable '{var[0:]}' not found")
@@ -50,6 +51,8 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("-")
+                num1 = var_pro(num1, let)
+                num2 = var_pro(num2, let)
                 num1 = int(num1)
                 num2 = int(num2)
                 print(num1 - num2)
@@ -59,6 +62,8 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("*")
+                num1 = var_pro(num1, let)
+                num2 = var_pro(num2, let)
                 num1, num2 = int(num1), int(num2)
                 print(num1 * num2)
             except Exception as e:
@@ -67,6 +72,8 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("/")
+                num1 = var_pro(num1, let)
+                num2 = var_pro(num2, let)
                 num1, num2 = int(num1), int(num2)
                 print(num1 / num2)
             except Exception as e:
@@ -75,6 +82,8 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 num1, num2 = mth.split("^")
+                num1 = var_pro(num1, let)
+                num2 = var_pro(num2, let)
                 num1, num2 = int(num1), int(num2)
                 print(num1**num2)
             except Exception as e:
@@ -84,6 +93,7 @@ def interpret(input):
         elif ";printf" in input:
             try:
                 name, filename = input.split(" ")
+                filename = var_pro(filename, let)
                 with open(filename) as file:
                     for line in file:
                         print(line)
@@ -93,6 +103,7 @@ def interpret(input):
             try:
                 name, mth = input.split(" ")
                 mth = int(mth)
+                mth = var_pro(mth, let)
                 answer = math.sqrt(mth)
                 print(answer, end="")
             except Exception as e:
@@ -101,6 +112,8 @@ def interpret(input):
             try:
                 name, content1 = input.split("~")
                 content, filename = content1.split("|filename|")
+                filename = var_pro(filename, let)
+                content = var_pro(content, let)
                 with open(filename, "a") as file:
                     file.write(content)
             except Exception as e:
@@ -109,6 +122,8 @@ def interpret(input):
             try:
                 name, content1 = input.split("~")
                 content, filename = content1.split("|filename|")
+                filename = var_pro(filename, let)
+                content = var_pro(content, let)
                 with open(filename, "w") as file:
                     file.write(content)
             except Exception as e:
@@ -143,9 +158,20 @@ def interpret(input):
                         except Exception:
                             func.proccess(action)
         elif ";sqr" in input:
-            name, math = line.split(" ")
-            math = int(math)
-            print(math**2)
+            try:
+                name, math = line.split(" ")
+                math = int(math)
+                math = var_pro(math)
+                print(math**2)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
+        elif ";prompt" in input:
+            try:
+                name, prompt = input.split(">")
+                ask, vartostore = input.split(":")
+                let[vartostore] = input(ask)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif "{" in input:
             try:
                 # redirect output
@@ -225,7 +251,6 @@ def shell():
                 name, filepath = shellinput.split(" ")
                 with open(filepath) as filename:
                     for line in filename:
-                        line = line.rstrip("\n")
                         line = str(line)
                         interpret(line)
             except Exception as e:
