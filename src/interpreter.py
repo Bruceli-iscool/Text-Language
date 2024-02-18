@@ -13,6 +13,8 @@ vars = {}
 # work on TDLI error handling
 let = {}
 
+
+# make all in into startswith()
 # always write elifs before the "{" check line in interpret
 def var_pro(userinput, c):
     if "{" in userinput and "}" in userinput:
@@ -32,11 +34,15 @@ def var_pro(userinput, c):
         return userinput
 
 
-def interpret(input):
-    if ";define" not in input and ";var" not in input and ";let" not in input:
-        if ";add" in input:
+def interpret(userinput):
+    if (
+        ";define" not in userinput
+        and ";var" not in userinput
+        and ";let" not in userinput
+    ):
+        if userinput.startswith(";add"):
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 num1, num2 = mth.split("+")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
@@ -45,11 +51,11 @@ def interpret(input):
                 print(num1 + num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif "//;" in input:
+        elif "//;" in userinput:
             pass
-        elif ";sub" in input:
+        elif ";sub" in userinput:
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 num1, num2 = mth.split("-")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
@@ -58,9 +64,9 @@ def interpret(input):
                 print(num1 - num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";mul" in input:
+        elif ";mul" in userinput:
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 num1, num2 = mth.split("*")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
@@ -68,9 +74,9 @@ def interpret(input):
                 print(num1 * num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";div" in input:
+        elif ";div" in userinput:
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 num1, num2 = mth.split("/")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
@@ -78,9 +84,9 @@ def interpret(input):
                 print(num1 / num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";pow" in input:
+        elif ";pow" in userinput:
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 num1, num2 = mth.split("^")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
@@ -88,29 +94,29 @@ def interpret(input):
                 print(num1**num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";newline" in input:
+        elif ";newline" in userinput:
             print("\n")
-        elif ";printf" in input:
+        elif ";printf" in userinput:
             try:
-                name, filename = input.split(" ")
+                name, filename = userinput.split(" ")
                 filename = var_pro(filename, let)
                 with open(filename) as file:
                     for line in file:
                         print(line)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";root" in input:
+        elif ";root" in userinput:
             try:
-                name, mth = input.split(" ")
+                name, mth = userinput.split(" ")
                 mth = int(mth)
                 mth = var_pro(mth, let)
                 answer = math.sqrt(mth)
                 print(answer, end="")
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";write~" in input:
+        elif userinput.startswith(";write~"):
             try:
-                name, content1 = input.split("~")
+                name, content1 = userinput.split("~")
                 content, filename = content1.split("|filename|")
                 filename = var_pro(filename, let)
                 content = var_pro(content, let)
@@ -118,9 +124,9 @@ def interpret(input):
                     file.write(content)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";overwrite~" in input:
+        elif userinput.startswith(";overwrite~"):
             try:
-                name, content1 = input.split("~")
+                name, content1 = userinput.split("~")
                 content, filename = content1.split("|filename|")
                 filename = var_pro(filename, let)
                 content = var_pro(content, let)
@@ -128,8 +134,8 @@ def interpret(input):
                     file.write(content)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif input.startswith(";") and input[1:] in functioned:
-            action = functioned[input[1:]]
+        elif userinput.startswith(";") and userinput[1:] in functioned:
+            action = functioned[userinput[1:]]
             try:
                 action, action2, action3, action4, action5 = action.split(":")
                 func.proccess(action)
@@ -157,7 +163,7 @@ def interpret(input):
                             func.proccess(action2)
                         except Exception:
                             func.proccess(action)
-        elif ";sqr" in input:
+        elif userinput.startswith(";sqr"):
             try:
                 name, math = line.split(" ")
                 math = int(math)
@@ -165,18 +171,115 @@ def interpret(input):
                 print(math**2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";prompt" in input:
+        elif userinput.startswith(";prompt"):
             try:
-                name, prompt = input.split(">")
-                ask, vartostore = input.split(":")
-                let[vartostore] = input(ask)
+                name, prompt = userinput.split(">")
+                ask, vartostore = prompt.split(":")
+                answer = input(ask)
+                let[vartostore] = answer
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif "{" in input:
+        elif userinput.startswith(";if"):
+            try:
+                name, other = userinput.split(">")
+                conv1, cCB2 = other.split("=")
+                cCB2, otherCB = cCB2.split("|")
+                conv1 = var_pro(conv1)
+                cCB2 = var_pro(cCB2)
+                if "==" in other:
+                    if conv1 == cCB2:
+                        try:
+                            code1, code2, code3, code4, code5 = otherCB.split(":")
+                            func.proccess(code1)
+                            func.proccess(code2)
+                            func.proccess(code3)
+                            func.proccess(code4)
+                            func.proccess(code5)
+                        except Exception:
+                            try:
+                                code1, code2, code3, code4 = otherCB.split(":")
+                                func.proccess(code1)
+                                func.proccess(code2)
+                                func.proccess(code3)
+                                func.proccess(code4)
+                            except Exception:
+                                try:
+                                    code1, code2, code3 = otherCB.split(":")
+                                    func.proccess(code1)
+                                    func.proccess(code2)
+                                    func.proccess(code3)
+                                except Exception:
+                                    try:
+                                        code1, code2 = otherCB.split(":")
+                                        func.proccess(code1)
+                                        func.proccess(code2)
+                                    except Exception:
+                                        func.proccess(otherCB)
+                elif ">" in other:
+                    if conv1 > cCB2:
+                        try:
+                            code1, code2, code3, code4, code5 = otherCB.split(":")
+                            func.proccess(code1)
+                            func.proccess(code2)
+                            func.proccess(code3)
+                            func.proccess(code4)
+                            func.proccess(code5)
+                        except Exception:
+                            try:
+                                code1, code2, code3, code4 = otherCB.split(":")
+                                func.proccess(code1)
+                                func.proccess(code2)
+                                func.proccess(code3)
+                                func.proccess(code4)
+                            except Exception:
+                                try:
+                                    code1, code2, code3 = otherCB.split(":")
+                                    func.proccess(code1)
+                                    func.proccess(code2)
+                                    func.proccess(code3)
+                                except Exception:
+                                    try:
+                                        code1, code2 = otherCB.split(":")
+                                        func.proccess(code1)
+                                        func.proccess(code2)
+                                    except Exception:
+                                        func.proccess(otherCB)
+                elif "<" in other:
+                    if conv1 < cCB2:
+                        try:
+                            code1, code2, code3, code4, code5 = otherCB.split(":")
+                            func.proccess(code1)
+                            func.proccess(code2)
+                            func.proccess(code3)
+                            func.proccess(code4)
+                            func.proccess(code5)
+                        except Exception:
+                            try:
+                                code1, code2, code3, code4 = otherCB.split(":")
+                                func.proccess(code1)
+                                func.proccess(code2)
+                                func.proccess(code3)
+                                func.proccess(code4)
+                            except Exception:
+                                try:
+                                    code1, code2, code3 = otherCB.split(":")
+                                    func.proccess(code1)
+                                    func.proccess(code2)
+                                    func.proccess(code3)
+                                except Exception:
+                                    try:
+                                        code1, code2 = otherCB.split(":")
+                                        func.proccess(code1)
+                                        func.proccess(code2)
+                                    except Exception:
+                                        func.proccess(otherCB)
+            except Exception as e:
+                pass
+        elif "[" in userinput:
             try:
                 # redirect output
-                sentence, other = input.split("{")
-                varstr, sentence2 = other.split("}")
+                sentence, other = userinput.split("[")
+                varstr, sentence2 = other.split("]")
                 original_output = sys.stdout
                 sys.stdout = output = StringIO()
                 try:
@@ -189,24 +292,25 @@ def interpret(input):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
-            print(input)
-    elif ";define" in input:
+            userinput = var_pro(userinput)
+            print(userinput)
+    elif ";define" in userinput:
         try:
-            name, content = input.split(">")
+            name, content = userinput.split(">")
             funcname, action = content.split("=")
             functioned[funcname] = action
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-    elif ";var" in input:
+    elif ";var" in userinput:
         try:
-            name, content = input.split(">")
+            name, content = userinput.split(">")
             varname, value = content.split("=")
             vars[varname] = value
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-    elif ";let" in input:
+    elif ";let" in userinput:
         try:
-            name, content = input.split(">")
+            name, content = userinput.split(">")
             varname, value = content.split("=")
             let[varname] = value
         except Exception as e:

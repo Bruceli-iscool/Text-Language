@@ -7,7 +7,7 @@ Variables can be declared like this:
 
 They can be used in formated strings:
 
-    1+2 = {;varname} and thats it
+    1+2 = [;varname] and thats it
     //; returns 1+2 = 3 and thats it
 They can be declared with the let keyword:
     ;let>hi=43

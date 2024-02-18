@@ -27,4 +27,6 @@ Features can be used with their respected tags:
       ;overwrite~ content |filename|/path/to/file
       //; writes content to a file and replaces whats in it
       ;sqr 4
-      Finds the square of a number
+      //; Finds the square of a number
+      ;prompt>what to ask:{varname}
+      //; Asks for user input
