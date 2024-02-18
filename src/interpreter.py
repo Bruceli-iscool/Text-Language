@@ -167,7 +167,7 @@ def interpret(userinput):
             try:
                 name, math = line.split(" ")
                 math = int(math)
-                math = var_pro(math)
+                math = var_pro(math, let)
                 print(math**2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
@@ -179,14 +179,14 @@ def interpret(userinput):
                 let[vartostore] = answer
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif userinput.startswith(";if"):
+        elif ";if" in userinput:
             try:
                 name, other = userinput.split(">")
-                conv1, cCB2 = other.split("=")
-                cCB2, otherCB = cCB2.split("|")
-                conv1 = var_pro(conv1)
-                cCB2 = var_pro(cCB2)
+                cCB2, otherCB = other.split("|")
                 if "==" in other:
+                    conv1, cCB2 = cCB2.split("==")
+                    conv1 = var_pro(conv1, let)
+                    cCB2 = var_pro(cCB2, let)
                     if conv1 == cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -214,8 +214,14 @@ def interpret(userinput):
                                         func.proccess(code1)
                                         func.proccess(code2)
                                     except Exception:
-                                        func.proccess(otherCB)
-                elif ">" in other:
+                                        try:
+                                            func.proccess(otherCB)
+                                        except Exception as e:
+                                            print("tldt: Not enough arguments.")
+                elif "!" in other:
+                    conv1, cCB2 = cCB2.split("!")
+                    conv1 = int(var_pro(conv1, let))
+                    cCB2 = int(var_pro(cCB2, let))
                     if conv1 > cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -245,6 +251,9 @@ def interpret(userinput):
                                     except Exception:
                                         func.proccess(otherCB)
                 elif "<" in other:
+                    conv1, cCB2 = cCB2.split("<")
+                    conv1 = int(var_pro(conv1, let))
+                    cCB2 = int(var_pro(cCB2, let))
                     if conv1 < cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -274,7 +283,7 @@ def interpret(userinput):
                                     except Exception:
                                         func.proccess(otherCB)
             except Exception as e:
-                pass
+                print(f"tldt: An error occured: {e}")
         elif "[" in userinput:
             try:
                 # redirect output
@@ -292,7 +301,7 @@ def interpret(userinput):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
-            userinput = var_pro(userinput)
+            userinput = var_pro(userinput, let)
             print(userinput)
     elif ";define" in userinput:
         try:
