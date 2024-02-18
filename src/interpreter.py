@@ -12,21 +12,25 @@ functioned = {}
 vars = {}
 # work on TDLI error handling
 let = {}
+
+
 def var_pro(userinput, c):
-    print(c)
-    c= {}
     if "{" in userinput and "}" in userinput:
-        name, var = userinput.split("{")
-        varname, other = var.split("}")
-        varname = varname.rstrip("\n")
-        if varname[1:] in c:
-            action = c[varname[:1]]
+        start = userinput.find("{") + 1
+        end = userinput.find("}")
+        if start < end:
+            var = userinput[start:end]
+            var = var.rstrip()
+        if var in c:
+            action = c[var[0:]]
             return str(action)
         else:
-            print(f"tldt: Variable '{varname[0:]}' not found")
+            print(f"tldt: Variable '{var[0:]}' not found")
             return userinput
     else:
         return userinput
+
+
 def interpret(input):
     if ";define" not in input and ";var" not in input and ";let" not in input:
         if ";add" in input:
