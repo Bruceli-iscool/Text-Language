@@ -24,8 +24,46 @@ def var_pro(userinput, c):
         if var in c:
             action = c[var[0:]]
             action = str(action)
-            return str(action)
-        else:
+            if "+" or "-" or "/" or "*" in action:
+                if "+" in action:
+                    try:
+                        num1, num2 = action.split("+")
+                        num1 = int(num1)
+                        num2 = int(num2)
+                        sum = num1 + num2
+                        return str(sum)
+                    except Exception as e:
+                        print(f"tldt: An error occured: {e}")
+                elif "-" in action:
+                    try:
+                       num1, num2 = action.split("-")
+                       num1 = int(num1)
+                       num2 = int(num2)
+                       diff = num1 -  num2
+                       return str(diff)
+                    except Exception as e:
+                        print(f"tldt: An error occured: {e}")
+                elif "/" in action:
+                    try:
+                       num1, num2 = action.split("/")
+                       num1 = int(num1)
+                       num2 = int(num2)
+                       diff = num1 / num2
+                       return str(diff)
+                    except Exception as e:
+                        print(f"tldt: An error occured: {e}")
+                elif "*" in action:
+                    try:
+                       num1, num2 = action.split("*")
+                       num1 = int(num1)
+                       num2 = int(num2)
+                       diff = num1 *  num2
+                       return str(diff)
+                    except Exception as e:
+                        print(f"tldt: An error occured: {e}")
+            else:
+                action = str(action)
+                return action
             print(f"tldt: Variable '{var[0:]}' not found")
             return userinput
     else:
