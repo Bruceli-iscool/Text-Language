@@ -1,19 +1,5 @@
-import sys
-import math
-import re
-import func
-from io import StringIO
 from var import let, functioned
-
-"""Proccess code"""
-
-# list of variables
-vars = {}
-# work on TDLI error handling
-
-
-# make all in into startswith()
-# always write elifs before the "{" check line in interpret
+import interpreter
 def var_pro(userinput, c):
     if "{" in userinput and "}" in userinput:
         start = userinput.find("{") + 1
@@ -136,31 +122,31 @@ def interpret(userinput):
             action = functioned[userinput[1:]]
             try:
                 action, action2, action3, action4, action5 = action.split(":")
-                func.proccess(action)
-                func.proccess(action2)
-                func.proccess(action3)
-                func.proccess(action4)
-                func.proccess(action5)
+                interpreter.interpret(action)
+                interpreter.interpret(action2)
+                interpreter.interpret(action3)
+                interpreter.interpret(action4)
+                interpreter.interpret(action5)
             except Exception:
                 try:
                     action, action2, action3, action4 = action.split(":")
-                    func.proccess(action)
-                    func.proccess(action2)
-                    func.proccess(action3)
-                    func.proccess(action4)
+                    interpreter.interpret(action)
+                    interpreter.interpret(action2)
+                    interpreter.interpret(action3)
+                    interpreter.interpret(action4)
                 except Exception:
                     try:
                         action, action2, action3 = action.split(":")
-                        func.proccess(action)
-                        func.proccess(action2)
-                        func.proccess(action3)
+                        interpreter.interpret(action)
+                        interpreter.interpret(action2)
+                        interpreter.interpret(action3)
                     except Exception:
                         try:
                             action, action2 = action.split(":")
-                            func.proccess(action)
-                            func.proccess(action2)
+                            interpreter.interpret(action)
+                            interpreter.interpret(action2)
                         except Exception:
-                            func.proccess(action)
+                            interpreter.interpret(action)
         elif userinput.startswith(";sqr"):
             try:
                 name, math = line.split(" ")
@@ -188,32 +174,32 @@ def interpret(userinput):
                     if conv1 == cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
-                            func.proccess(code1)
-                            func.proccess(code2)
-                            func.proccess(code3)
-                            func.proccess(code4)
-                            func.proccess(code5)
+                            interpreter.interpret(code1)
+                            interpreter.interpret(code2)
+                            interpreter.interpret(code3)
+                            interpreter.interpret(code4)
+                            interpreter.interpret(code5)
                         except Exception:
                             try:
                                 code1, code2, code3, code4 = otherCB.split(":")
-                                func.proccess(code1)
-                                func.proccess(code2)
-                                func.proccess(code3)
-                                func.proccess(code4)
+                                interpreter.interpret(code1)
+                                interpreter.interpret(code2)
+                                interpreter.interpret(code3)
+                                interpreter.interpret(code4)
                             except Exception:
                                 try:
                                     code1, code2, code3 = otherCB.split(":")
-                                    func.proccess(code1)
-                                    func.proccess(code2)
-                                    func.proccess(code3)
+                                    interpreter.interpret(code1)
+                                    interpreter.interpret(code2)
+                                    interpreter.interpret(code3)
                                 except Exception:
                                     try:
                                         code1, code2 = otherCB.split(":")
-                                        func.proccess(code1)
-                                        func.proccess(code2)
+                                        interpreter.interpret(code1)
+                                        interpreter.interpret(code2)
                                     except Exception:
                                         try:
-                                            func.proccess(otherCB)
+                                            interpreter.interpret(otherCB)
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
                 elif "!" in other:
@@ -223,31 +209,31 @@ def interpret(userinput):
                     if conv1 > cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
-                            func.proccess(code1)
-                            func.proccess(code2)
-                            func.proccess(code3)
-                            func.proccess(code4)
-                            func.proccess(code5)
+                            interpreter.interpret(code1)
+                            interpreter.interpret(code2)
+                            interpreter.interpret(code3)
+                            interpreter.interpret(code4)
+                            interpreter.interpret(code5)
                         except Exception:
                             try:
                                 code1, code2, code3, code4 = otherCB.split(":")
-                                func.proccess(code1)
-                                func.proccess(code2)
-                                func.proccess(code3)
-                                func.proccess(code4)
+                                interpreter.interpret(code1)
+                                interpreter.interpret(code2)
+                                interpreter.interpret(code3)
+                                interpreter.interpret(code4)
                             except Exception:
                                 try:
                                     code1, code2, code3 = otherCB.split(":")
-                                    func.proccess(code1)
-                                    func.proccess(code2)
-                                    func.proccess(code3)
+                                    interpreter.interpret(code1)
+                                    interpreter.interpret(code2)
+                                    interpreter.interpret(code3)
                                 except Exception:
                                     try:
                                         code1, code2 = otherCB.split(":")
-                                        func.proccess(code1)
-                                        func.proccess(code2)
+                                        interpreter.interpret(code1)
+                                        interpreter.interpret(code2)
                                     except Exception:
-                                        func.proccess(otherCB)
+                                        interpreter.interpret(otherCB)
                 elif "<" in other:
                     conv1, cCB2 = cCB2.split("<")
                     conv1 = int(var_pro(conv1, let))
@@ -255,31 +241,31 @@ def interpret(userinput):
                     if conv1 < cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
-                            func.proccess(code1)
-                            func.proccess(code2)
-                            func.proccess(code3)
-                            func.proccess(code4)
-                            func.proccess(code5)
+                            interpreter.interpret(code1)
+                            interpreter.interpret(code2)
+                            interpreter.interpret(code3)
+                            interpreter.interpret(code4)
+                            interpreter.interpret(code5)
                         except Exception:
                             try:
                                 code1, code2, code3, code4 = otherCB.split(":")
-                                func.proccess(code1)
-                                func.proccess(code2)
-                                func.proccess(code3)
-                                func.proccess(code4)
+                                interpreter.interpret(code1)
+                                interpreter.interpret(code2)
+                                interpreter.interpret(code3)
+                                interpreter.interpret(code4)
                             except Exception:
                                 try:
                                     code1, code2, code3 = otherCB.split(":")
-                                    func.proccess(code1)
-                                    func.proccess(code2)
-                                    func.proccess(code3)
+                                    interpreter.interpret(code1)
+                                    interpreter.interpret(code2)
+                                    interpreter.interpret(code3)
                                 except Exception:
                                     try:
                                         code1, code2 = otherCB.split(":")
-                                        func.proccess(code1)
-                                        func.proccess(code2)
+                                        interpreter.interpret(code1)
+                                        interpreter.interpret(code2)
                                     except Exception:
-                                        func.proccess(otherCB)
+                                        interpreter.interpret(otherCB)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif "[" in userinput:
@@ -290,7 +276,7 @@ def interpret(userinput):
                 original_output = sys.stdout
                 sys.stdout = output = StringIO()
                 try:
-                    func.proccess(vars[varstr[1:]])
+                    interpreter.interpret(vars[varstr[1:]])
                 finally:
                     sys.stdout = original_output
                     actual_output = output.getvalue().strip()
@@ -324,47 +310,3 @@ def interpret(userinput):
             print(f"tldt: An error occured: {e}")
     else:
         pass
-
-
-def openfile(filename):
-    with open(filename) as file:
-        for line in file:
-            if "#get" in line:
-                try:
-                    name, filepath = line.split(" ")
-                    with open(filepath) as filename:
-                        for line in filename:
-                            line = line.rstrip("\n")
-                            line = str(line)
-                            interpret(line)
-                except Exception as e:
-                    print(f"tldt: An error occured: {e}")
-            else:
-                line = line.rstrip("\n")
-                interpret(line)
-
-
-def shell():
-    print(
-        "Welcome to the interactive shell. The Shell allows you to run commands\nexit() to exit"
-    )
-    while True:
-        shellinput = input(">> ")
-        shellinput = shellinput.rstrip("\n")
-        if shellinput == "exit()":
-            return
-        elif shellinput == "sys.exit()":
-            sys.exit()
-        elif len(shellinput) < 2:
-            pass
-        if "#get" in shellinput:
-            try:
-                name, filepath = shellinput.split(" ")
-                with open(filepath) as filename:
-                    for line in filename:
-                        line = str(line)
-                        interpret(line)
-            except Exception as e:
-                print(f"tldt: An error occured: {e}")
-        elif shellinput != "":
-            interpret(shellinput)
