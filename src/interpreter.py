@@ -4,6 +4,7 @@ import re
 import func
 from io import StringIO
 from var import let, functioned
+import var_pro
 
 """Proccess code"""
 
@@ -13,64 +14,10 @@ vars = {}
 
 
 # make all in floato startswith()
-# always write elifs before the "{" check line in floaterpret
-def var_pro(userinput, c):
-    if "{" in userinput and "}" in userinput:
-        start = userinput.find("{") + 1
-        end = userinput.find("}")
-        if start < end:
-            var = userinput[start:end]
-            var = var.rstrip()
-        if var in c:
-            action = c[var[0:]]
-            action = str(action)
-            if "+" or "-" or "/" or "*" in action:
-                if "+" in action:
-                    try:
-                        num1, num2 = action.split("+")
-                        num1 = float(num1)
-                        num2 = float(num2)
-                        sum = num1 + num2
-                        return str(sum)
-                    except Exception as e:
-                        print(f"tldt: An error occured: {e}")
-                elif "-" in action:
-                    try:
-                       num1, num2 = action.split("-")
-                       num1 = float(num1)
-                       num2 = float(num2)
-                       diff = num1 -  num2
-                       return str(diff)
-                    except Exception as e:
-                        print(f"tldt: An error occured: {e}")
-                elif "/" in action:
-                    try:
-                       num1, num2 = action.split("/")
-                       num1 = float(num1)
-                       num2 = float(num2)
-                       diff = num1 / num2
-                       return str(diff)
-                    except Exception as e:
-                        print(f"tldt: An error occured: {e}")
-                elif "*" in action:
-                    try:
-                       num1, num2 = action.split("*")
-                       num1 = float(num1)
-                       num2 = float(num2)
-                       diff = num1 *  num2
-                       return str(diff)
-                    except Exception as e:
-                        print(f"tldt: An error occured: {e}")
-            else:
-                action = str(action)
-                return action
-            print(f"tldt: Variable '{var[0:]}' not found")
-            return userinput
-    else:
-        return userinput
+# always write elifs before the "{" check line in interpret
 
 
-def floaterpret(userinput):
+def interpret(userinput):
     if (
         ";define" not in userinput
         and ";var" not in userinput
@@ -80,8 +27,8 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("+")
-                num1 = var_pro(num1, let)
-                num2 = var_pro(num2, let)
+                num1 = var_pro.var_pro(num1, let)
+                num2 = var_pro.var_pro(num2, let)
                 num1 = float(num1)
                 num2 = float(num2)
                 print(num1 + num2)
@@ -93,8 +40,8 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("-")
-                num1 = var_pro(num1, let)
-                num2 = var_pro(num2, let)
+                num1 = var_pro.var_pro(num1, let)
+                num2 = var_pro.var_pro(num2, let)
                 num1 = float(num1)
                 num2 = float(num2)
                 print(num1 - num2)
@@ -104,8 +51,8 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("*")
-                num1 = var_pro(num1, let)
-                num2 = var_pro(num2, let)
+                num1 = var_pro.var_pro(num1, let)
+                num2 = var_pro.var_pro(num2, let)
                 num1, num2 = float(num1), float(num2)
                 print(num1 * num2)
             except Exception as e:
@@ -114,8 +61,8 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("/")
-                num1 = var_pro(num1, let)
-                num2 = var_pro(num2, let)
+                num1 = var_pro.var_pro(num1, let)
+                num2 = var_pro.var_pro(num2, let)
                 num1, num2 = float(num1), float(num2)
                 print(num1 / num2)
             except Exception as e:
@@ -124,8 +71,8 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("^")
-                num1 = var_pro(num1, let)
-                num2 = var_pro(num2, let)
+                num1 = var_pro.var_pro(num1, let)
+                num2 = var_pro.var_pro(num2, let)
                 num1, num2 = float(num1), float(num2)
                 print(num1**num2)
             except Exception as e:
@@ -135,7 +82,7 @@ def floaterpret(userinput):
         elif ";printf" in userinput:
             try:
                 name, filename = userinput.split(" ")
-                filename = var_pro(filename, let)
+                filename = var_pro.var_pro(filename, let)
                 with open(filename) as file:
                     for line in file:
                         print(line)
@@ -145,7 +92,7 @@ def floaterpret(userinput):
             try:
                 name, mth = userinput.split(" ")
                 mth = float(mth)
-                mth = var_pro(mth, let)
+                mth = var_pro.var_pro(mth, let)
                 answer = math.sqrt(mth)
                 print(answer, end="")
             except Exception as e:
@@ -154,8 +101,8 @@ def floaterpret(userinput):
             try:
                 name, content1 = userinput.split("~")
                 content, filename = content1.split("|filename|")
-                filename = var_pro(filename, let)
-                content = var_pro(content, let)
+                filename = var_pro.var_pro(filename, let)
+                content = var_pro.var_pro(content, let)
                 with open(filename, "a") as file:
                     file.write(content)
             except Exception as e:
@@ -164,8 +111,8 @@ def floaterpret(userinput):
             try:
                 name, content1 = userinput.split("~")
                 content, filename = content1.split("|filename|")
-                filename = var_pro(filename, let)
-                content = var_pro(content, let)
+                filename = var_pro.var_pro(filename, let)
+                content = var_pro.var_pro(content, let)
                 with open(filename, "w") as file:
                     file.write(content)
             except Exception as e:
@@ -203,7 +150,7 @@ def floaterpret(userinput):
             try:
                 name, math = line.split(" ")
                 math = float(math)
-                math = var_pro(math, let)
+                math = var_pro.var_pro(math, let)
                 print(math**2)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
@@ -221,8 +168,8 @@ def floaterpret(userinput):
                 cCB2, otherCB = other.split("|")
                 if "==" in other:
                     conv1, cCB2 = cCB2.split("==")
-                    conv1 = var_pro(conv1, let)
-                    cCB2 = var_pro(cCB2, let)
+                    conv1 = var_pro.var_pro(conv1, let)
+                    cCB2 = var_pro.var_pro(cCB2, let)
                     if conv1 == cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -256,8 +203,8 @@ def floaterpret(userinput):
                                             print("tldt: Not enough arguments.")
                 elif "!" in other:
                     conv1, cCB2 = cCB2.split("!")
-                    conv1 = float(var_pro(conv1, let))
-                    cCB2 = float(var_pro(cCB2, let))
+                    conv1 = float(var_pro.var_pro(conv1, let))
+                    cCB2 = float(var_pro.var_pro(cCB2, let))
                     if conv1 > cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -288,8 +235,8 @@ def floaterpret(userinput):
                                         func.proccess(otherCB)
                 elif "<" in other:
                     conv1, cCB2 = cCB2.split("<")
-                    conv1 = float(var_pro(conv1, let))
-                    cCB2 = float(var_pro(cCB2, let))
+                    conv1 = float(var_pro.var_pro(conv1, let))
+                    cCB2 = float(var_pro.var_pro(cCB2, let))
                     if conv1 < cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -337,7 +284,7 @@ def floaterpret(userinput):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
-            userinput = var_pro(userinput, let)
+            userinput = var_pro.var_pro(userinput, let)
             print(userinput)
     elif ";define" in userinput:
         try:
