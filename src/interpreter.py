@@ -12,8 +12,8 @@ vars = {}
 # work on TDLI error handling
 
 
-# make all in into startswith()
-# always write elifs before the "{" check line in interpret
+# make all in floato startswith()
+# always write elifs before the "{" check line in floaterpret
 def var_pro(userinput, c):
     if "{" in userinput and "}" in userinput:
         start = userinput.find("{") + 1
@@ -28,8 +28,8 @@ def var_pro(userinput, c):
                 if "+" in action:
                     try:
                         num1, num2 = action.split("+")
-                        num1 = int(num1)
-                        num2 = int(num2)
+                        num1 = float(num1)
+                        num2 = float(num2)
                         sum = num1 + num2
                         return str(sum)
                     except Exception as e:
@@ -37,8 +37,8 @@ def var_pro(userinput, c):
                 elif "-" in action:
                     try:
                        num1, num2 = action.split("-")
-                       num1 = int(num1)
-                       num2 = int(num2)
+                       num1 = float(num1)
+                       num2 = float(num2)
                        diff = num1 -  num2
                        return str(diff)
                     except Exception as e:
@@ -46,8 +46,8 @@ def var_pro(userinput, c):
                 elif "/" in action:
                     try:
                        num1, num2 = action.split("/")
-                       num1 = int(num1)
-                       num2 = int(num2)
+                       num1 = float(num1)
+                       num2 = float(num2)
                        diff = num1 / num2
                        return str(diff)
                     except Exception as e:
@@ -55,8 +55,8 @@ def var_pro(userinput, c):
                 elif "*" in action:
                     try:
                        num1, num2 = action.split("*")
-                       num1 = int(num1)
-                       num2 = int(num2)
+                       num1 = float(num1)
+                       num2 = float(num2)
                        diff = num1 *  num2
                        return str(diff)
                     except Exception as e:
@@ -70,7 +70,7 @@ def var_pro(userinput, c):
         return userinput
 
 
-def interpret(userinput):
+def floaterpret(userinput):
     if (
         ";define" not in userinput
         and ";var" not in userinput
@@ -82,8 +82,8 @@ def interpret(userinput):
                 num1, num2 = mth.split("+")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
-                num1 = int(num1)
-                num2 = int(num2)
+                num1 = float(num1)
+                num2 = float(num2)
                 print(num1 + num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
@@ -95,8 +95,8 @@ def interpret(userinput):
                 num1, num2 = mth.split("-")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
-                num1 = int(num1)
-                num2 = int(num2)
+                num1 = float(num1)
+                num2 = float(num2)
                 print(num1 - num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
@@ -106,7 +106,7 @@ def interpret(userinput):
                 num1, num2 = mth.split("*")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
-                num1, num2 = int(num1), int(num2)
+                num1, num2 = float(num1), float(num2)
                 print(num1 * num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
@@ -116,7 +116,7 @@ def interpret(userinput):
                 num1, num2 = mth.split("/")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
-                num1, num2 = int(num1), int(num2)
+                num1, num2 = float(num1), float(num2)
                 print(num1 / num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
@@ -126,7 +126,7 @@ def interpret(userinput):
                 num1, num2 = mth.split("^")
                 num1 = var_pro(num1, let)
                 num2 = var_pro(num2, let)
-                num1, num2 = int(num1), int(num2)
+                num1, num2 = float(num1), float(num2)
                 print(num1**num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
@@ -144,7 +144,7 @@ def interpret(userinput):
         elif ";root" in userinput:
             try:
                 name, mth = userinput.split(" ")
-                mth = int(mth)
+                mth = float(mth)
                 mth = var_pro(mth, let)
                 answer = math.sqrt(mth)
                 print(answer, end="")
@@ -202,7 +202,7 @@ def interpret(userinput):
         elif userinput.startswith(";sqr"):
             try:
                 name, math = line.split(" ")
-                math = int(math)
+                math = float(math)
                 math = var_pro(math, let)
                 print(math**2)
             except Exception as e:
@@ -256,8 +256,8 @@ def interpret(userinput):
                                             print("tldt: Not enough arguments.")
                 elif "!" in other:
                     conv1, cCB2 = cCB2.split("!")
-                    conv1 = int(var_pro(conv1, let))
-                    cCB2 = int(var_pro(cCB2, let))
+                    conv1 = float(var_pro(conv1, let))
+                    cCB2 = float(var_pro(cCB2, let))
                     if conv1 > cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -288,8 +288,8 @@ def interpret(userinput):
                                         func.proccess(otherCB)
                 elif "<" in other:
                     conv1, cCB2 = cCB2.split("<")
-                    conv1 = int(var_pro(conv1, let))
-                    cCB2 = int(var_pro(cCB2, let))
+                    conv1 = float(var_pro(conv1, let))
+                    cCB2 = float(var_pro(cCB2, let))
                     if conv1 < cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -374,17 +374,17 @@ def openfile(filename):
                         for line in filename:
                             line = line.rstrip("\n")
                             line = str(line)
-                            interpret(line)
+                            floaterpret(line)
                 except Exception as e:
                     print(f"tldt: An error occured: {e}")
             else:
                 line = line.rstrip("\n")
-                interpret(line)
+                floaterpret(line)
 
 
 def shell():
     print(
-        "Welcome to the interactive shell. The Shell allows you to run commands\nexit() to exit"
+        "Welcome to the floateractive shell. The Shell allows you to run commands\nexit() to exit"
     )
     while True:
         shellinput = input(">> ")
@@ -401,8 +401,8 @@ def shell():
                 with open(filepath) as filename:
                     for line in filename:
                         line = str(line)
-                        interpret(line)
+                        floaterpret(line)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif shellinput != "":
-            interpret(shellinput)
+            floaterpret(shellinput)
