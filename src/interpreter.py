@@ -1,6 +1,6 @@
 import sys
 import math
-import re
+import statistics
 import func
 from io import StringIO
 from var import let, functioned
@@ -321,12 +321,12 @@ def openfile(filename):
                         for line in filename:
                             line = line.rstrip("\n")
                             line = str(line)
-                            floaterpret(line)
+                            interpret(line)
                 except Exception as e:
                     print(f"tldt: An error occured: {e}")
             else:
                 line = line.rstrip("\n")
-                floaterpret(line)
+                interpret(line)
 
 
 def shell():
@@ -348,8 +348,8 @@ def shell():
                 with open(filepath) as filename:
                     for line in filename:
                         line = str(line)
-                        floaterpret(line)
+                        interpret(line)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif shellinput != "":
-            floaterpret(shellinput)
+            interpret(shellinput)
