@@ -254,6 +254,16 @@ def interpret(userinput):
                                         interpreter.interpret(otherCB)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
+        elif userinput.startswith(";while"):
+            try:
+                name, funtion = userinput.split(">")
+                cbname, functioncb = funtion.split(":")
+                while cbname:
+                    interpreter.interpret(functioncb)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
+        elif userinput.startswith(";break"):
+            sys.exit()
         elif userinput.startswith(";int"):
             name, variable = userinput.split(">")
             var = var_pro.var_pro(variable)
