@@ -1,9 +1,8 @@
 import sys
-import math
-import statistics
 import func
 from io import StringIO
 from var import let, functioned
+import art
 import var_pro
 
 """Proccess code"""
@@ -297,6 +296,7 @@ def interpret(userinput):
                 print(f"tldt: An error occured: {e}")
         else:
             userinput = var_pro.var_pro(userinput, let)
+            art.art(userinput)
             print(userinput)
     elif ";define" in userinput:
         try:
