@@ -267,6 +267,18 @@ def interpret(userinput):
                                         func.proccess(otherCB)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
+        elif userinput.startswith(";int"):
+            name, variable = userinput.split(">")
+            var = var_pro.var_pro(variable)
+            var, decimal = var.split(".")
+            let[variable]=var
+        elif userinput.startswith(";join"):
+            name, cb1 = userinput.split(">")
+            cb2, cb3 = cb1.split("=")
+            cb, cb5 = cb2.split("+")
+            cb = var_pro.var_pro(cb)
+            cb5 = var_pro.var_pro(cb5)
+            let[cb3] = cb + cb5
         elif "[" in userinput:
             try:
                 # redirect output

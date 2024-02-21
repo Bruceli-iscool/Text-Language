@@ -30,3 +30,7 @@ Features can be used with their respected tags:
       //; Finds the square of a number
       ;prompt>what to ask:{varname}
       //; Asks for user input
+      ;int>{var}
+      //; Converts a variable into a integer
+      ;join>{var}+{cb}=tim
+      //; Adds two strings and stores them in another variable
