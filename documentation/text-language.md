@@ -34,3 +34,5 @@ Features can be used with their respected tags:
       //; Converts a variable into a integer
       ;join>{var}+{cb}=tim
       //; Adds two strings and stores them in another variable
+      ;break
+      //; Exits the program
