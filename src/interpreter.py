@@ -35,7 +35,7 @@ def interpret(userinput):
                 print(f"tldt: An error occurred: {e}")
         elif "//;" in userinput:
             pass
-        elif ";sub" in userinput:
+        elif userinput.startswith(";sub"):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("-")
@@ -46,7 +46,7 @@ def interpret(userinput):
                 print(num1 - num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";mul" in userinput:
+        elif userinput.startswith(";mul"):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("*")
@@ -56,7 +56,7 @@ def interpret(userinput):
                 print(num1 * num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";div" in userinput:
+        elif userinput.startswith(";div"):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("/")
@@ -66,7 +66,7 @@ def interpret(userinput):
                 print(num1 / num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";pow" in userinput:
+        elif userinput.startswith("pow"):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("^")
@@ -76,7 +76,7 @@ def interpret(userinput):
                 print(num1**num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif ";newline" in userinput:
+        elif userinput.startswith(";newline"):
             print("\n")
         elif ";printf" in userinput:
             try:
@@ -87,7 +87,7 @@ def interpret(userinput):
                         print(line)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
-        elif ";root" in userinput:
+        elif userinput.startswith(";root"):
             try:
                 name, mth = userinput.split(" ")
                 mth = float(mth)
