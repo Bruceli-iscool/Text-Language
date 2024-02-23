@@ -66,7 +66,7 @@ def interpret(userinput):
                 print(num1 / num2)
             except Exception as e:
                 print(f"tldt: An error occurred: {e}")
-        elif userinput.startswith("pow"):
+        elif userinput.startswith(";pow"):
             try:
                 name, mth = userinput.split(" ")
                 num1, num2 = mth.split("^")
@@ -78,7 +78,7 @@ def interpret(userinput):
                 print(f"tldt: An error occurred: {e}")
         elif userinput.startswith(";newline"):
             print("\n")
-        elif ";printf" in userinput:
+        elif userinput.startswith(";printf"):
             try:
                 name, filename = userinput.split(" ")
                 filename = var_pro.var_pro(filename, let)
