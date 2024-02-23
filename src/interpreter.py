@@ -12,7 +12,7 @@ vars = {}
 # work on TDLI error handling
 
 
-# make all in floato startswith()
+# make all ifs use startswith()
 # always write elifs before the "{" check line in interpret
 
 
