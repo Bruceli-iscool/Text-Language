@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: Security 
+about: alert us about about security issues. for details email virtualkernel@outlook.com
 title: ''
 labels: ''
 assignees: ''
