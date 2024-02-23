@@ -1,0 +1,8 @@
+The Text-Language Interpreter standards 4.0
+
+Preamble:
+The Standards of the TLI is a series of unified syntax rules. These Standards are applied to every TLI variant. 
+These Standards are version Specific.
+
+4.0
+The TLI will become turing complete.
