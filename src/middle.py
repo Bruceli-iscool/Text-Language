@@ -3,6 +3,7 @@ import interpreter
 import var_pro
 import sys
 from io import StringIO
+import random
 
 def interpret(userinput):
     if (
@@ -266,16 +267,22 @@ def interpret(userinput):
             sys.exit()
         elif userinput.startswith(";int"):
             name, variable = userinput.split(">")
-            var = var_pro.var_pro(variable)
+            var = var_pro.var_pro(variable, let)
             var, decimal = var.split(".")
             let[variable]=var
         elif userinput.startswith(";join"):
             name, cb1 = userinput.split(">")
             cb2, cb3 = cb1.split("=")
             cb, cb5 = cb2.split("+")
-            cb = var_pro.var_pro(cb)
-            cb5 = var_pro.var_pro(cb5)
+            cb = var_pro.var_pro(cb, let)
+            cb5 = var_pro.var_pro(cb5, let)
             let[cb3] = cb + cb5
+        elif userinput.startswith(";choice"):
+            name, content = userinput.split(">")
+            random1, cbrandom, varname = content.split(",")
+            random1 = int(var_pro.var_pro(random1, let))
+            cbrandom = int(var_pro.var_pro(cbrandom, let))
+            let[varname] = random.randint(random1, cbrandom)
         elif "[" in userinput:
             try:
                 # redirect output

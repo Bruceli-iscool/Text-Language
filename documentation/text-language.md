@@ -36,3 +36,5 @@ Features can be used with their respected tags:
       //; Adds two strings and stores them in another variable
       ;break
       //; Exits the program
+      ;choice>1,20,varname
+      //; Picks a random number and stores it in a variable

@@ -4,6 +4,7 @@ from io import StringIO
 from var import let, functioned
 import art
 import var_pro
+import random
 
 """Proccess code"""
 
@@ -266,6 +267,12 @@ def interpret(userinput):
                                         func.proccess(otherCB)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
+        elif userinput.startswith(";choice"):
+            name, content = userinput.split(">")
+            random1, cbrandom, varname = content.split(",")
+            random1 = int(var_pro.var_pro(random1, let))
+            cbrandom = int(var_pro.var_pro(cbrandom, let))
+            let[varname] = random.randint(random1, cbrandom)
         elif userinput.startswith(";while"):
             try:
                 name, funtion = userinput.split(">")
