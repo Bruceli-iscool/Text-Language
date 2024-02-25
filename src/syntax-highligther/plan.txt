@@ -1,0 +1,2 @@
+I have decided to use textmate2.0 to make the vscode extension
+The approach is to highlight keywords but not strings kinda like markdown.
