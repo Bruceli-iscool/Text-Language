@@ -3,3 +3,4 @@
 ;choice>1,2,num
 ;prompt>Give me a number:{answer}
 ;if>answer==num|correct
+;if>answer!=num|incorrect
