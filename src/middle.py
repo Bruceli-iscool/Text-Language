@@ -253,6 +253,47 @@ def interpret(userinput):
                                         interpreter.interpret(code2)
                                     except Exception:
                                         interpreter.interpret(otherCB)
+                elif "!=" in other:
+                    conv1, cCB2 = cCB2.split("!=")
+                    conv1 = float(var_pro.var_pro(conv1, let))
+                    cCB2 = float(var_pro.var_pro(cCB2, let))
+                    if conv1 != cCB2:
+                        try:
+                            code1, code2, code3, code4, code5 = otherCB.split(":")
+                            interpreter.interpret(code1)
+                            interpreter.interpret(code2)
+                            interpreter.interpret(code3)
+                            interpreter.interpret(code4)
+                            interpreter.interpret(code5)
+                        except Exception:
+                            try:
+                                code1, code2, code3, code4 = otherCB.split(":")
+                                interpreter.interpret(code1)
+                                interpreter.interpret(code2)
+                                interpreter.interpret(code3)
+                                interpreter.interpret(code4)
+                            except Exception:
+                                try:
+                                    code1, code2, code3 = otherCB.split(":")
+                                    interpreter.interpret(code1)
+                                    interpreter.interpret(code2)
+                                    interpreter.interpret(code3)
+                                except Exception:
+                                    try:
+                                        code1, code2 = otherCB.split(":")
+                                        interpreter.interpret(code1)
+                                        interpreter.interpret(code2)
+                                    except Exception:
+                                        interpreter.interpret(otherCB)
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
+        elif userinput.startswith(";choice"):
+            try:
+                name, content = userinput.split(">")
+                random1, cbrandom, varname = content.split(",")
+                random1 = int(var_pro.var_pro(random1, let))
+                cbrandom = int(var_pro.var_pro(cbrandom, let))
+                let[varname] = random.randint(random1, cbrandom)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif userinput.startswith(";while"):
@@ -266,23 +307,23 @@ def interpret(userinput):
         elif userinput.startswith(";break"):
             sys.exit()
         elif userinput.startswith(";int"):
-            name, variable = userinput.split(">")
-            var = var_pro.var_pro(variable, let)
-            var, decimal = var.split(".")
-            let[variable]=var
+            try:
+                name, variable = userinput.split(">")
+                var = var_pro.var_pro(variable, let)
+                var, decimal = var.split(".")
+                let[variable]=var
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif userinput.startswith(";join"):
-            name, cb1 = userinput.split(">")
-            cb2, cb3 = cb1.split("=")
-            cb, cb5 = cb2.split("+")
-            cb = var_pro.var_pro(cb, let)
-            cb5 = var_pro.var_pro(cb5, let)
-            let[cb3] = cb + cb5
-        elif userinput.startswith(";choice"):
-            name, content = userinput.split(">")
-            random1, cbrandom, varname = content.split(",")
-            random1 = int(var_pro.var_pro(random1, let))
-            cbrandom = int(var_pro.var_pro(cbrandom, let))
-            let[varname] = random.randint(random1, cbrandom)
+            try:
+                name, cb1 = userinput.split(">")
+                cb2, cb3 = cb1.split("=")
+                cb, cb5 = cb2.split("+")
+                cb = var_pro.var_pro(cb, let)
+                cb5 = var_pro.var_pro(cb5, let)
+                let[cb3] = cb + cb5
+            except Exception as e:
+                print(f"tldt: An error occured: {e}")
         elif "[" in userinput:
             try:
                 # redirect output
