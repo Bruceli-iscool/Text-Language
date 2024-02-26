@@ -1,10 +1,6 @@
 def var_pro(userinput, c):
     if "{" in userinput and "}" in userinput:
-        start = userinput.find("{") + 1
-        end = userinput.find("}")
-        if start < end:
-            var = userinput[start:end]
-            var = var.rstrip()
+        var = userinput.split("{")[1].split("}")[0]
         if var in c:
             action = c[var[0:]]
             action = str(action)

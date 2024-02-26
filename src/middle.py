@@ -255,8 +255,8 @@ def interpret(userinput):
                                         interpreter.interpret(otherCB)
                 elif "!=" in other:
                     conv1, cCB2 = cCB2.split("!=")
-                    conv1 = float(var_pro.var_pro(conv1, let))
-                    cCB2 = float(var_pro.var_pro(cCB2, let))
+                    conv1 = var_pro.var_pro(conv1, let)
+                    cCB2 = var_pro.var_pro(cCB2, let)
                     if conv1 != cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
