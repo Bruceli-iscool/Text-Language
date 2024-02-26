@@ -2,7 +2,6 @@ import sys
 import func
 from io import StringIO
 from var import let, functioned
-import art
 import var_pro
 import random
 
@@ -201,7 +200,7 @@ def interpret(userinput):
                                             func.proccess(otherCB)
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
-                elif "!" in other:
+                elif "`" in other:
                     conv1, cCB2 = cCB2.split("!")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
@@ -267,8 +266,8 @@ def interpret(userinput):
                                         func.proccess(otherCB)
                 elif "!=" in other:
                     conv1, cCB2 = cCB2.split("!=")
-                    conv1 = var_pro.var_pro(conv1, let)
-                    cCB2 = var_pro.var_pro(cCB2, let)
+                    #conv1 = var_pro.var_pro(conv1, let)
+                    #cCB2 = var_pro.var_pro(cCB2, let)
                     if conv1 != cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -354,7 +353,6 @@ def interpret(userinput):
                 print(f"tldt: An error occured: {e}")
         else:
             userinput = var_pro.var_pro(userinput, let)
-            art.art(userinput)
             print(userinput)
     elif ";define" in userinput:
         try:
