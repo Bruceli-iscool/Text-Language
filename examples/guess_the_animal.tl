@@ -10,7 +10,11 @@ What is a animal that has a trunk?
 //; use word blob
 What animal is very fast?
 ;prompt> :answer
-;if>{answer}==cheeta|Yah, You got it right
-;if>{answer}!=cheeta|wrong
-
+;if>{answer}==cheetah|Yah, You got it right
+;if>{answer}!=cheetah|wrong
+What animal is smart?
+;prompt> :answer
+;if>{answer}==monkey|Yah, You got it right
+;if>{answer}==bruce|Yah, You got it right
+;if>{answer}!=monkey|wrong
 You completed the quiz!
