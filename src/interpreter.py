@@ -158,7 +158,7 @@ def interpret(userinput):
                 name, prompt = userinput.split(">")
                 ask, vartostore = prompt.split(":")
                 answer = str(input(ask).rstrip('\n'))
-                let[vartostore] = answer
+                let[vartostore] = '"'+answer+'"'
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif ";if" in userinput:
@@ -201,7 +201,7 @@ def interpret(userinput):
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
                 elif ">" in other:
-                    conv1, cCB2 = cCB2.split("!")
+                    conv1, cCB2 = cCB2.split(">")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
                     if conv1 > cCB2:
