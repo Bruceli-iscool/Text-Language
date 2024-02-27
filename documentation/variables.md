@@ -2,7 +2,7 @@
 
 Variables can be declared like this:
 
-    ;var>varname=varvalue
+    ;var>varname="varvalue"
     ;var>varname=;add 1+2
 
 They can be used in formated strings:

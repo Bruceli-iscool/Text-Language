@@ -157,7 +157,7 @@ def interpret(userinput):
             try:
                 name, prompt = userinput.split(">")
                 ask, vartostore = prompt.split(":")
-                answer = input(ask)
+                answer = input(ask).rstrip('\n')
                 let[vartostore] = answer
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
@@ -200,7 +200,7 @@ def interpret(userinput):
                                             func.proccess(otherCB)
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
-                elif "`" in other:
+                elif ">" in other:
                     conv1, cCB2 = cCB2.split("!")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
