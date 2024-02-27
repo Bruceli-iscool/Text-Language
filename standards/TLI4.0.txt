@@ -5,4 +5,4 @@ The Standards of the TLI is a series of unified syntax rules. These Standards ar
 These Standards are version Specific.
 
 4.0
-The TLI will become turing complete.
+The TLI will become turing complete. TLI will become a function-oriented language with input and output capabilities.
