@@ -157,7 +157,7 @@ def interpret(userinput):
             try:
                 name, prompt = userinput.split(">")
                 ask, vartostore = prompt.split(":")
-                answer = input(ask).rstrip('\n')
+                answer = str(input(ask).rstrip('\n'))
                 let[vartostore] = answer
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
@@ -266,8 +266,8 @@ def interpret(userinput):
                                         func.proccess(otherCB)
                 elif "!=" in other:
                     conv1, cCB2 = cCB2.split("!=")
-                    #conv1 = var_pro.var_pro(conv1, let)
-                    #cCB2 = var_pro.var_pro(cCB2, let)
+                    conv1 = var_pro.var_pro(conv1, let)
+                    cCB2 = var_pro.var_pro(cCB2, let)
                     if conv1 != cCB2:
                         try:
                             code1, code2, code3, code4, code5 = otherCB.split(":")
@@ -320,7 +320,7 @@ def interpret(userinput):
         elif userinput.startswith(";int"):
             try:
                 name, variable = userinput.split(">")
-                var = var_pro.var_pro(variable, let)
+                var = str(var_pro.var_pro(variable, let))
                 var, decimal = var.split(".")
                 let[variable]=var
             except Exception as e:

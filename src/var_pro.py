@@ -65,4 +65,4 @@ def var_pro(userinput, c):
             print(f"tldt: Variable '{var}' not found")
             return userinput
     else:
-        return userinput
+        return str(userinput)

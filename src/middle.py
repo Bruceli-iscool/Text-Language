@@ -189,7 +189,7 @@ def interpret(userinput):
                                             interpreter.interpret(otherCB)
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
-                elif "!" in other:
+                elif ">" in other:
                     conv1, cCB2 = cCB2.split("!")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
