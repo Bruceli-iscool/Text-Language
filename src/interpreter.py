@@ -165,7 +165,7 @@ def interpret(userinput):
             try:
                 name, other = userinput.split(">")
                 cCB2, otherCB = other.split("|")
-                if "==" in other:
+                if "==" in cCB2:
                     conv1, cCB2 = cCB2.split("==")
                     conv1 = var_pro.var_pro(conv1, let)
                     cCB2 = var_pro.var_pro(cCB2, let)
@@ -200,7 +200,7 @@ def interpret(userinput):
                                             func.proccess(otherCB)
                                         except Exception as e:
                                             print("tldt: Not enough arguments.")
-                elif ">" in other:
+                elif ">" in cCB2:
                     conv1, cCB2 = cCB2.split(">")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
@@ -232,7 +232,7 @@ def interpret(userinput):
                                         func.proccess(code2)
                                     except Exception:
                                         func.proccess(otherCB)
-                elif "<" in other:
+                elif "<" in cCB2:
                     conv1, cCB2 = cCB2.split("<")
                     conv1 = float(var_pro.var_pro(conv1, let))
                     cCB2 = float(var_pro.var_pro(cCB2, let))
@@ -264,7 +264,7 @@ def interpret(userinput):
                                         func.proccess(code2)
                                     except Exception:
                                         func.proccess(otherCB)
-                elif "!=" in other:
+                elif "!=" in cCB2:
                     conv1, cCB2 = cCB2.split("!=")
                     conv1 = var_pro.var_pro(conv1, let)
                     cCB2 = var_pro.var_pro(cCB2, let)

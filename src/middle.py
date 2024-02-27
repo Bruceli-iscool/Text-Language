@@ -154,7 +154,7 @@ def interpret(userinput):
             try:
                 name, other = userinput.split(">")
                 cCB2, otherCB = other.split("|")
-                if "==" in other:
+                if "==" in cCB2:
                     conv1, cCB2 = cCB2.split("==")
                     conv1 = var_pro.var_pro(conv1, let)
                     cCB2 = var_pro.var_pro(cCB2, let)
