@@ -16,7 +16,7 @@
  An example of a function:
 
     ;define>hi=;add 1+2
-    //; cal the function
+    //; call the function
     ;hi
  An advantage of Text-Language is that everything fits on one line. For example:
  
