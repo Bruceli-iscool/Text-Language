@@ -4,6 +4,7 @@ from io import StringIO
 from var import let, functioned
 import var_pro
 import random
+import strings
 
 """Proccess code"""
 
