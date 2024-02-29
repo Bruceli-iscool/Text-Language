@@ -5,7 +5,7 @@
 
      Hello, World!
      //; This is a comment
- Everything in Text-Language that is not a command is printed to the console without quotes. However, commands execute features like if statements. 
+ Everything in Text-Language that is not a command is printed to the console without quotes. Commands execute features like if statements. 
  A demonstration of commands and normal word block:
 
     //; Word block
