@@ -354,11 +354,9 @@ def interpret(userinput):
                 print(f"tldt: An error occured: {e}")
         else:
             if getedS == 1:
-                if strings.check(userinput) == 1:
-                    pass
-                else:
-                    userinput = var_pro.var_pro(userinput, let)
-                    print(userinput)
+                strings.check(userinput)
+                userinput = var_pro.var_pro(userinput, let)
+                print(userinput)
             else:
                 userinput = var_pro.var_pro(userinput, let)
                 print(userinput)
@@ -393,11 +391,14 @@ def openfile(filename):
             if "#get" in line:
                 try:
                     name, filepath = line.split(" ")
-                    with open(filepath) as filename:
-                        for line in filename:
-                            line = line.rstrip("\n")
-                            line = str(line)
-                            interpret(line)
+                    if filepath == "strings.tl":
+                        getedS = 1
+                    else:
+                        with open(filepath) as filename:
+                            for line in filename:
+                                line = line.rstrip("\n")
+                                line = str(line)
+                                interpret(line)
                 except Exception as e:
                     print(f"tldt: An error occured: {e}")
             else:
@@ -421,10 +422,13 @@ def shell():
         if "#get" in shellinput:
             try:
                 name, filepath = shellinput.split(" ")
-                with open(filepath) as filename:
-                    for line in filename:
-                        line = str(line)
-                        interpret(line)
+                if filepath == "strings.tl":
+                    getedS = 1
+                else:
+                    with open(filepath) as filename:
+                        for line in filename:
+                            line = str(line)
+                            interpret(line)
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         elif shellinput != "":
