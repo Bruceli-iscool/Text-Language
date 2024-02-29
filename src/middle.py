@@ -342,8 +342,11 @@ def interpret(userinput):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
-            userinput = var_pro.var_pro(userinput, let)
-            print(userinput)
+            if getedS == 1:
+                strings.check(userinput)
+            else:
+                userinput = var_pro.var_pro(userinput, let)
+                print(userinput)
     elif ";define" in userinput:
         try:
             name, content = userinput.split(">")

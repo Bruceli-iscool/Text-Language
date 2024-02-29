@@ -354,9 +354,8 @@ def interpret(userinput):
                 print(f"tldt: An error occured: {e}")
         else:
             if getedS == 1:
+                print(getedS)
                 strings.check(userinput)
-                userinput = var_pro.var_pro(userinput, let)
-                print(userinput)
             else:
                 userinput = var_pro.var_pro(userinput, let)
                 print(userinput)

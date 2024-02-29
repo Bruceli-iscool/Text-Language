@@ -14,5 +14,3 @@ def check(userinput):
             return 1
         except Exception as e:
             print(f"tldt: An error occured: {e}")
-    else:
-        return 0
