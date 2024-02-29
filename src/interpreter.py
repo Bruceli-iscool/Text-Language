@@ -353,8 +353,7 @@ def interpret(userinput):
             except Exception as e:
                 print(f"tldt: An error occured: {e}")
         else:
-            if getedS == 1:
-                print(getedS)
+            if getedS != 0:
                 strings.check(userinput)
             else:
                 userinput = var_pro.var_pro(userinput, let)

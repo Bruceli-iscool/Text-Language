@@ -11,6 +11,7 @@ def check(userinput):
             vartosplit = var_pro.var_pro(vartosplit, let)
             result = vartosplit.upper()
             let[vartostore] = result
-            return 1
         except Exception as e:
             print(f"tldt: An error occured: {e}")
+    else:
+        pass
