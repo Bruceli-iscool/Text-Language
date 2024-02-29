@@ -1,9 +1,10 @@
-from var import let, functioned
+from var import *
 import interpreter
 import var_pro
 import sys
 from io import StringIO
 import random
+import strings
 
 def interpret(userinput):
     if (
