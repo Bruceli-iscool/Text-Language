@@ -421,7 +421,7 @@ def shell():
             try:
                 name, filepath = shellinput.split(" ")
                 if filepath == "strings.tl":
-                    getedS = 1
+                    getedS =+ 1
                 else:
                     with open(filepath) as filename:
                         for line in filename:
